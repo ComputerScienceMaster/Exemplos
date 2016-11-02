@@ -63,23 +63,13 @@ public class SegundoServlet extends HttpServlet {
         writer.println("</html>");
     }
 
-    private void printJSON (PrintWriter writer,
-                            String busca) throws IOException {
-        writer.println("[");
-        for (String fruta : this.cidades) {
-            if (fruta.toUpperCase().startsWith(busca.toUpperCase()))
-                writer.println("\"" + fruta + "\", ");
-        }
-        writer.println("\"\"]");
-    }
-
     public void init(ServletConfig config) throws ServletException {
         try {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(
                         config.getServletContext().getResourceAsStream(
                             config.getInitParameter("cidades")), "iso-8859-1"));
-            this.cidades = new ArrayList <String> ();
+            this.cidades = new ArrayList <>();
             String fruta = reader.readLine();
             while (fruta != null) {
                 this.cidades.add(fruta);
@@ -96,10 +86,6 @@ public class SegundoServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         String busca = request.getParameter("busca") == null ?
                             "" : request.getParameter("busca");
-
-        if (request.getHeader("accept").startsWith("application/json"))
-            this.printJSON(writer, busca);
-        else
             this.printHTML(writer, busca);
     }
 }
