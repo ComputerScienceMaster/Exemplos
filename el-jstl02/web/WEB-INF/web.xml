@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="http://java.sun.com/xml/ns/javaee"
+     xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+     id="WebApp_ID" version="3.0">
+    <display-name>JavaCMD for Web</display-name>
+    <servlet>
+        <servlet-name>CidadesController</servlet-name>
+        <servlet-class>controllers.CidadesController</servlet-class>
+        <init-param>
+            <param-name>cidades</param-name>
+            <param-value>/WEB-INF/resources/frutas.txt</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CidadesController</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+</web-app>
