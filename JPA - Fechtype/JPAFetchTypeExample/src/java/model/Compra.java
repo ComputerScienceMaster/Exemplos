@@ -7,17 +7,13 @@ package model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,7 +21,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -52,11 +47,6 @@ public class Compra implements Serializable {
     private Date data;
     @Column(name = "FormaDePagamento")
     private String formaDePagamento;
-    @JoinTable(name = "item_has_compra", joinColumns = {
-        @JoinColumn(name = "Compra_idCompra", referencedColumnName = "idCompra")}, inverseJoinColumns = {
-        @JoinColumn(name = "Item_idItem", referencedColumnName = "idItem")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Item> itemList;
     @JoinColumn(name = "Pessoa_idPessoa", referencedColumnName = "idPessoa")
     @ManyToOne(optional = false)
     private Pessoa pessoaidPessoa;
@@ -64,10 +54,9 @@ public class Compra implements Serializable {
     public Compra() {
     }
 
-    public Compra(Date data, String formaDePagamento, List<Item> itemList, Pessoa pessoaidPessoa) {
+    public Compra(Date data, String formaDePagamento, Pessoa pessoaidPessoa) {
         this.data = data;
         this.formaDePagamento = formaDePagamento;
-        this.itemList = itemList;
         this.pessoaidPessoa = pessoaidPessoa;
     }
 
@@ -100,15 +89,6 @@ public class Compra implements Serializable {
         this.formaDePagamento = formaDePagamento;
     }
 
-    @XmlTransient
-    public List<Item> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(List<Item> itemList) {
-        this.itemList = itemList;
-    }
-
     public Pessoa getPessoaidPessoa() {
         return pessoaidPessoa;
     }
@@ -139,9 +119,7 @@ public class Compra implements Serializable {
 
     @Override
     public String toString() {
-        return "Compra{" + "idCompra=" + idCompra + "\n, data=" + data + "\n, formaDePagamento=" + formaDePagamento + "\n, itemList=" + itemList + "\n, pessoaidPessoa=" + pessoaidPessoa + '}';
+        return "model.Compra[ idCompra=" + idCompra + " ]";
     }
-
-    
     
 }

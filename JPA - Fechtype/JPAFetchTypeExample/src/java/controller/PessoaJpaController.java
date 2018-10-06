@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controler;
+package controller;
 
-import controler.exceptions.IllegalOrphanException;
-import controler.exceptions.NonexistentEntityException;
+import controller.exceptions.IllegalOrphanException;
+import controller.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;

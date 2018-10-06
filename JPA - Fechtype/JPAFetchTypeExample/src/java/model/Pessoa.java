@@ -52,7 +52,7 @@ public class Pessoa implements Serializable {
     private String email;
     @Column(name = "senha")
     private String senha;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "pessoaidPessoa")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "pessoaidPessoa")
     private List<Compra> compraList;
 
     public Pessoa() {
@@ -64,6 +64,8 @@ public class Pessoa implements Serializable {
         this.email = email;
         this.senha = senha;
     }
+    
+    
 
     public Pessoa(Integer idPessoa) {
         this.idPessoa = idPessoa;
@@ -143,6 +145,7 @@ public class Pessoa implements Serializable {
         return "Pessoa{" + "idPessoa=" + idPessoa + "\n, nome=" + nome + "\n, login=" + login + "\n, email=" + email + "\n, senha=" + senha + "\n, compraList=" + compraList + '}';
     }
 
+    
     
     
 }

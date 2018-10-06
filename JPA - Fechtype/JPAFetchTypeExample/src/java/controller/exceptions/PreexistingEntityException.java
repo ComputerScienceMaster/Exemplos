@@ -1,4 +1,4 @@
-package controler.exceptions;
+package controller.exceptions;
 
 public class PreexistingEntityException extends Exception {
     public PreexistingEntityException(String message, Throwable cause) {

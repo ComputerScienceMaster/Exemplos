@@ -3,21 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controler;
+package controller;
 
-import controler.exceptions.NonexistentEntityException;
+import controller.exceptions.NonexistentEntityException;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import model.Pessoa;
-import model.Item;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import model.Compra;
+import model.Pessoa;
 
 /**
  *
@@ -35,9 +33,6 @@ public class CompraJpaController implements Serializable {
     }
 
     public void create(Compra compra) {
-        if (compra.getItemList() == null) {
-            compra.setItemList(new ArrayList<Item>());
-        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -47,20 +42,10 @@ public class CompraJpaController implements Serializable {
                 pessoaidPessoa = em.getReference(pessoaidPessoa.getClass(), pessoaidPessoa.getIdPessoa());
                 compra.setPessoaidPessoa(pessoaidPessoa);
             }
-            List<Item> attachedItemList = new ArrayList<Item>();
-            for (Item itemListItemToAttach : compra.getItemList()) {
-                itemListItemToAttach = em.getReference(itemListItemToAttach.getClass(), itemListItemToAttach.getIdItem());
-                attachedItemList.add(itemListItemToAttach);
-            }
-            compra.setItemList(attachedItemList);
             em.persist(compra);
             if (pessoaidPessoa != null) {
                 pessoaidPessoa.getCompraList().add(compra);
                 pessoaidPessoa = em.merge(pessoaidPessoa);
-            }
-            for (Item itemListItem : compra.getItemList()) {
-                itemListItem.getCompraList().add(compra);
-                itemListItem = em.merge(itemListItem);
             }
             em.getTransaction().commit();
         } finally {
@@ -78,19 +63,10 @@ public class CompraJpaController implements Serializable {
             Compra persistentCompra = em.find(Compra.class, compra.getIdCompra());
             Pessoa pessoaidPessoaOld = persistentCompra.getPessoaidPessoa();
             Pessoa pessoaidPessoaNew = compra.getPessoaidPessoa();
-            List<Item> itemListOld = persistentCompra.getItemList();
-            List<Item> itemListNew = compra.getItemList();
             if (pessoaidPessoaNew != null) {
                 pessoaidPessoaNew = em.getReference(pessoaidPessoaNew.getClass(), pessoaidPessoaNew.getIdPessoa());
                 compra.setPessoaidPessoa(pessoaidPessoaNew);
             }
-            List<Item> attachedItemListNew = new ArrayList<Item>();
-            for (Item itemListNewItemToAttach : itemListNew) {
-                itemListNewItemToAttach = em.getReference(itemListNewItemToAttach.getClass(), itemListNewItemToAttach.getIdItem());
-                attachedItemListNew.add(itemListNewItemToAttach);
-            }
-            itemListNew = attachedItemListNew;
-            compra.setItemList(itemListNew);
             compra = em.merge(compra);
             if (pessoaidPessoaOld != null && !pessoaidPessoaOld.equals(pessoaidPessoaNew)) {
                 pessoaidPessoaOld.getCompraList().remove(compra);
@@ -99,18 +75,6 @@ public class CompraJpaController implements Serializable {
             if (pessoaidPessoaNew != null && !pessoaidPessoaNew.equals(pessoaidPessoaOld)) {
                 pessoaidPessoaNew.getCompraList().add(compra);
                 pessoaidPessoaNew = em.merge(pessoaidPessoaNew);
-            }
-            for (Item itemListOldItem : itemListOld) {
-                if (!itemListNew.contains(itemListOldItem)) {
-                    itemListOldItem.getCompraList().remove(compra);
-                    itemListOldItem = em.merge(itemListOldItem);
-                }
-            }
-            for (Item itemListNewItem : itemListNew) {
-                if (!itemListOld.contains(itemListNewItem)) {
-                    itemListNewItem.getCompraList().add(compra);
-                    itemListNewItem = em.merge(itemListNewItem);
-                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -145,11 +109,6 @@ public class CompraJpaController implements Serializable {
             if (pessoaidPessoa != null) {
                 pessoaidPessoa.getCompraList().remove(compra);
                 pessoaidPessoa = em.merge(pessoaidPessoa);
-            }
-            List<Item> itemList = compra.getItemList();
-            for (Item itemListItem : itemList) {
-                itemListItem.getCompraList().remove(compra);
-                itemListItem = em.merge(itemListItem);
             }
             em.remove(compra);
             em.getTransaction().commit();
