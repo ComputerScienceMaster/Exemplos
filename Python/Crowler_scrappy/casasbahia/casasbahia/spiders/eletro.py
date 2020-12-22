@@ -1,6 +1,4 @@
 import scrapy
-import sys
-sys.path.append("C:/Users/Vinicius/Desktop/Alunos/bruna/Crowler Example/CasasBahia/CasasBahia")
 from casasbahia.items import CasasbahiaItem
 
 class EletroSpider(scrapy.Spider):
