@@ -8,7 +8,7 @@
 import scrapy
 
 
-class StackoverflowcrowlerItem(scrapy.Item):
+class StackoverflowcrawlerItem(scrapy.Item):
     # define the fields for your item here like:
     titulo = scrapy.Field()
     pass

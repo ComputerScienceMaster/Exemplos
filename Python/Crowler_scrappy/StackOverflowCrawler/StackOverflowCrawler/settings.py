@@ -9,14 +9,14 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'stackOverflowCrowler'
+BOT_NAME = 'StackOverflowCrawler'
 
-SPIDER_MODULES = ['stackOverflowCrowler.spiders']
-NEWSPIDER_MODULE = 'stackOverflowCrowler.spiders'
+SPIDER_MODULES = ['StackOverflowCrawler.spiders']
+NEWSPIDER_MODULE = 'StackOverflowCrawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'stackOverflowCrowler (+http://www.yourdomain.com)'
+USER_AGENT = "USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)'"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
