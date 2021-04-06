@@ -1,1 +1,0 @@
-gcc -o main main.c matematica.c
