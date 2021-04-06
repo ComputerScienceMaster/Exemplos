@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:j="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:include src="../includes/HeadIncludesPublic.xhtml"/>
+    <ui:include src="../includes/NavBar.xhtml"/>
+
+    <body>
+        <div class="container">
+            <p:growl autoUpdate="true"/>
+            <div class="starter-template" style="margin-top: 9%">
+                <div class="detailContainer">
+                    <h2 style="text-align: center">Detalhes da viagem</h2>
+                    <h:graphicImage alt="carona" name="images/travel.jpg" class="travelIconDetails" />
+                    <div class="detailsTravelElements">
+                        <div> <strong>Carro utilizado: </strong> #{travelManagedBean.actualTravel.carPlate.brand} - #{travelManagedBean.actualTravel.carPlate.model} - #{travelManagedBean.actualTravel.carPlate.plate}</div>
+                        <div> <strong>Destino: </strong>#{travelManagedBean.actualTravel.destination}</div>
+                        <div> <strong>Descrição:</strong> #{travelManagedBean.actualTravel.description}</div>
+                        <div> <strong>Início da viagem: </strong>
+                            <h:outputText value="#{travelManagedBean.actualTravel.dateInitial}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                            #{travelManagedBean.actualTravel.timeInitial}
+                        </div>
+                        <div> <strong>Fim da viagem: </strong>
+                            <h:outputText value="#{travelManagedBean.actualTravel.dateEnd}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                            #{travelManagedBean.actualTravel.timeEnd}
+                        </div>
+                        <h:form id="formUsersInTravel">
+                            <div class="userListContainer">
+
+                                <ui:repeat value="#{travelManagedBean.actualTravel.userAccountList}" var="ocupantes">
+                                    <div class="row-user">
+                                        <div class="left">
+                                            <h:graphicImage alt="user" name="images/user.png" class="userIcon" />
+                                        </div>
+                                        <div class="right">#{ocupantes.userName}</div>
+                                        <div class="right">#{ocupantes.phone}</div>
+                                        <div class="right">#{ocupantes.email}</div>
+                                        <p:commandButton update=":formUsersInTravel" action="#{travelManagedBean.removeUserFromTravel()}" styleClass="btn btn-default" icon="ui-icon-trash">
+                                            <f:setPropertyActionListener target="#{travelManagedBean.actualUserAccount}" value="#{ocupantes}"/>
+                                        </p:commandButton>
+                                    </div>
+                                </ui:repeat>
+                            </div>
+                        </h:form>
+                        <h:form>
+                            <div style="float: left; margin: 4%; width: 96%">
+                                <p:selectBooleanButton disabled="true" offLabel="Esta viagem está diponível" onLabel="Esta viagem está marcada como terminada" value="#{travelManagedBean.actualTravel.isDone}"/>
+                            </div>
+                            <h:commandButton   
+                                value="Quero ir também!" 
+                                style="margin: 1%;" 
+                                action="#{travelManagedBean.submitToThisTrip()}" 
+                                styleClass="btn btn-success">
+                                <p:ajax update=":formUsersInTravel" />
+                            </h:commandButton>
+                            <h:commandButton 
+
+                                value="alterar status para realizada" 
+                                style="margin: 1%;" 
+                                action="#{travelManagedBean.setTravelDone()}" 
+                                styleClass="btn btn-warning">
+                                <p:ajax update="@form" />
+                            </h:commandButton>
+                            <h:commandButton 
+                                value="Editar viagem" 
+                                style="margin: 1%;" 
+                                action="#{travelManagedBean.gotoEditTravel()}" 
+                                styleClass="btn btn-primary">
+                                <p:ajax update="@form" />
+                            </h:commandButton> 
+                        </h:form>
+                    </div>
+                </div>
+
+
+                <div style="margin-top: 10%">
+                    <h:form id="formTasks">
+                        <ui:repeat id="listOfTasks" value="#{travelManagedBean.listOfTasks}" var="task">
+                            <div class="taskList">
+                                <div class="left">
+                                    <h:graphicImage alt="carona" name="images/task.png" class="taskIcon" />
+                                </div>
+                                <div class="right">
+                                    <div>Nome da tarefa: #{task.name}</div>
+                                    <div>Descrição: #{task.description}</div>
+                                    <p:commandButton update="@form" styleClass="btn btn-danger" style="margin-top: 1%" value="Excluir tarefa" icon="ui-icon-close" action="#{travelManagedBean.destroyTask()}">
+                                        <f:setPropertyActionListener target="#{travelManagedBean.actualTask}" value="#{task}"/>
+                                    </p:commandButton>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </h:form>
+                    <h:form id="formAddTask">
+
+                        <div class="formInsertTask">
+
+                            <div >
+                                <h5>Tarefas</h5>
+                                <div class="form-group">
+                                    <h:inputText  required="true" requiredMessage="É necessário escolher dar um título a sua Tarefa" styleClass="form-control" a:placeholder="Digite o nome da tarefa" value="#{travelManagedBean.actualTask.name}"/>
+                                    <h:inputTextarea required="true" requiredMessage="É necessário descrever sua tarefa"     styleClass="form-control" rows="5" a:placeholder="Descreva sua tarefa" value="#{travelManagedBean.actualTask.description}"/>
+                                    <p:commandButton update="formTasks @form" style="margin-top: 1%;" action="#{travelManagedBean.saveTask()}" styleClass="btn btn-primary form-control" value="Cadastrar Tarefa"/>
+                                </div>                        
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+    <ui:include src="../includes/Footer.xhtml"/>
+</html>

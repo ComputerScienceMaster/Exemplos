@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:j="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:include src="../includes/HeadIncludesPublic.xhtml"/>
+    <body>
+        <ui:include src="../includes/NavBar.xhtml"/>
+
+        <div class="container">
+            <div class="starter-template" style="margin-top: 9%">
+                <h:form>
+                    <p:growl autoUpdate="true"/>
+                    <h5>Edite as informações da viagem</h5>
+                    <div class="jumbotron">
+                        <div class="form-group">
+                            <h:outputLabel for="selectTheCar" styleClass="form-control" value="Selecione o Carro"/>
+                            <h:selectOneMenu requiredMessage="É obrigatório selecionar um veículo" required="true" id="selectTheCar" styleClass="form-control" value="#{travelManagedBean.actualCar}">
+                                <f:selectItems value="#{travelManagedBean.listOfCars}" var="car" itemLabel="#{car.brand} - #{car.model} - #{car.plate}" itemValue="#{car}"/>
+                                <f:converter converterId="ConvertCars"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel for="typeTheDestination" styleClass="form-control" value="Destino"/>
+                            <h:inputText id="typeTheDestination" requiredMessage="É necessário inserir um destino" required="true" styleClass="form-control" value="#{travelManagedBean.actualTravel.destination}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel for="typeTheDescription" styleClass="form-control" value="Descrição"/>
+                            <h:inputTextarea 
+                                id="typeTheDescription" 
+                                requiredMessage="Descreva seu objetivo com esta viagem" 
+                                required="true" 
+                                rows="7" 
+                                a:maxlength="2000"
+                                styleClass="form-control" 
+                                value="#{travelManagedBean.actualTravel.description}"/>
+                        </div>
+                    </div>
+
+                    <h5>Preencha a data e horário da viagem</h5>
+
+                    <div class="jumbotron">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <h:outputLabel  for="initial" styleClass="form-control" value="Data de saída"/>
+                                <p:calendar id="initial" 
+                                            value="#{travelManagedBean.dateInitial}" 
+                                            pattern="dd/MM/yyyy" 
+                                            mode="inline"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <h:outputLabel for="end" styleClass="form-control" value="Data de chegada"/>
+                                <p:calendar 
+                                    id="end" 
+                                    required="true" 
+                                    requiredMessage="Selecione um data e horario previsto de chegada" 
+                                    value="#{travelManagedBean.dateEnd}" 
+                                    pattern="dd/MM/yyyy" 
+                                    mode="inline"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <h:outputLabel  for="timeInitial" styleClass="form-control" value="Horario de saída"/>
+                                <p:spinner id="timeInitialHour" 
+                                           required="true" 
+                                           max="24"
+                                           requiredMessage="Selecione a hora prevista de saída" 
+                                           value="#{travelManagedBean.hourInitial}" />
+                                <p:spinner id="timeInitialMinute" 
+                                           required="true" 
+                                           max="60"
+                                           requiredMessage="Selecione o minuto previsto de saída" 
+                                           value="#{travelManagedBean.minuteInitial}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <h:outputLabel for="timeEnd" styleClass="form-control" value="Horario de chegada"/>
+                                <p:spinner 
+                                    id="timeEndHour" 
+                                    required="true" 
+                                    max="24"
+                                    requiredMessage="Selecione a hora prevista de chegada" 
+                                    value="#{travelManagedBean.hourEnd}" />
+                                <p:spinner 
+                                    id="timeEndMinute" 
+                                    required="true" 
+                                    max="60"
+                                    requiredMessage="Selecione os minutos previstos de chegada" 
+                                    value="#{travelManagedBean.minuteEnd}" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5>São permitidas caronas?</h5>
+                    <div class="jumbotron">
+
+                        <p:selectBooleanCheckbox value="#{travelManagedBean.actualTravel.isRideAllowed}" itemLabel="Permitir caronas"/>
+                    </div>
+                    <h:commandButton styleClass="form-control btn btn-primary" style="margin-bottom: 2%" value="Finalizar edições" action="#{travelManagedBean.editTravel()}"/>
+                </h:form>
+            </div>
+        </div>
+    </body>
+    <ui:include src="../includes/Footer.xhtml"/>
+</html>

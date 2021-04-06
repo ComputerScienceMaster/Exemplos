@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:j="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:include src="../includes/HeadIncludesPublic.xhtml"/>
+    <ui:include src="../includes/NavBar.xhtml"/>
+    <body>
+
+
+        <h:form>
+            <div class="container">
+                <div style="margin-top: 9%">
+                    <h:dataTable styleClass="table table-bordered table-hover" value="#{UserAccountManagedBean.listOfUserAccounts}" var="acc">
+                        <h:column >
+                            <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="#{acc.userName}"/>
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header">Telefone</f:facet>
+                            <h:outputText value="#{acc.phone}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Email</f:facet>
+                            <h:outputText value="#{acc.email}"/>
+                        </h:column>
+                        <h:column >
+                            <f:facet name="header">Setor</f:facet>
+                            <h:outputText value="#{acc.sector}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Ações</f:facet>
+                            <p:commandButton update="@form" icon="ui-icon-close"  action="#{UserAccountManagedBean.destroyUserAccounts()}" >
+                                <f:setPropertyActionListener target="#{UserAccountManagedBean.actualUserAccount}" value="#{acc}"/>
+                            </p:commandButton>
+                            <p:commandButton update="@form" icon="ui-icon-pencil"  action="#{UserAccountManagedBean.gotoEditMyProfile()}" >
+                                <f:setPropertyActionListener target="#{UserAccountManagedBean.actualUserAccount}" value="#{acc}"/>
+                            </p:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </div>
+        </h:form>
+    </body>
+    <ui:include src="../includes/Footer.xhtml"/>
+</html>

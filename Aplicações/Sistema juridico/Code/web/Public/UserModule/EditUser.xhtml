@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/core">
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+
+    <h:body>
+
+        <div class="content">
+            <ui:include src="/Public/Components/Headers/Header.xhtml"/>
+
+            <fn:choose>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.primeNav}">
+                    <ui:include src="/Public/Components/Navs/PrimeNav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.defaultNav}">
+                    <ui:include src="/Public/Components/Navs/Nav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.bootstrapNav}">
+                    <ui:include src="/Public/Components/Navs/BootstrapNav.xhtml"/>
+                </fn:when>
+
+            </fn:choose>
+
+            <div class="page-content">
+
+                <div class="tituloTopico">Editar Informações</div>
+
+                <div class="textoExtenso">Os dados que você fornece ao site permanecem em 
+                    sigilo, porém cuidado com as suas informações.<br/>
+                    Escolha senhas contendo letras maiusculas e minusculas, numeros e letras
+                    e também símbolos. Estes são padrões de segurança importantes para que
+                    sua conta seja protegida<br/>
+                    <br/><br/>Se você tiver alguma dúvida entre em contato pelo e-mail
+                    <strong>#{ManageLoginManagedBean.componentsContainer.generalInformation.email}</strong></div>
+                <p:growl autoUpdate="true"/>
+
+
+                <div class="formElements">
+                    <h:form style="float:left; width: 100%">
+                        <h:panelGrid  columns="1" style="float:left; width: 100%; padding: 2%;">
+
+                            <p:outputLabel style="margin-top: 20px" value="Foto"/>
+                            <p:fileUpload id="Imagem"  required="true" auto="false" sizeLimit="300000" requiredMessage="A foto principal é obrigatória"  update="@form" fileLimit="1" fileUploadListener="#{ManageUserManagedBean.uploadImagemUsuario}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"  />
+                            <p:graphicImage id="imagemUsuario" width="110" height="110" cache="false" class="img-thumbnail" value="#{ManageUserManagedBean.imagemAtual}" />
+
+
+                            <p:outputLabel class="smallMargin" value="Senha "/>
+                            <p:password placeholder="Digite sua senha" feedback="false" validatorMessage="Senha de confirmação diferente" class="centralizar" match="confirmacaoSenha" required="true" requiredMessage="Por favor, digite sua senha"  value="#{ManageUserManagedBean.actualUser.passwordUser}" /> 
+                            <p:outputLabel value="Confirme sua senha "/>
+                            <p:password id="confirmacaoSenha" feedback="false" placeholder="Digite novamente sua senha" required="true" requiredMessage="Por favor, confirme sua senha" class="centralizar"  value="#{ManageUserManagedBean.actualUser.passwordUser}" /> 
+
+                            <p:outputLabel value="Nome "/>
+                            <p:inputText placeholder="Digite o seu nome completo" class="centralizar"  value="#{ManageUserManagedBean.actualUser.fullNameUser}" /> 
+
+                            <p:outputLabel value="Nacionalidade "/>
+                            <p:inputText placeholder="Digite sua nacionalidade" class="centralizar"  value="#{ManageUserManagedBean.actualUser.nationality}" /> 
+
+                            <p:outputLabel value="E-mail "/>
+                            <p:inputText class="centralizar" placeholder="Digite seu E-mail" required="true" size="40" requiredMessage="Por favor, Digite seu e-mail"
+                                         validatorMessage="Formato de e-mail Invalido" value="#{ManageUserManagedBean.actualUser.emailUser}" >
+                                <f:validateRegex
+                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputText> 
+
+                            <p:outputLabel value="Cadastro na OAB "/>
+                            <p:inputText placeholder="Cadastro na OAB" class="centralizar"  value="#{ManageUserManagedBean.actualUser.oab}" /> 
+
+                            <p:outputLabel style="margin-top: 20px" value="Estado civil "/>
+                            <p:selectOneRadio id="console" class="centralizar" style="width: 100%;" value="#{ManageUserManagedBean.actualUser.maritalStatus}">
+                                <f:selectItem itemLabel="Casado" itemValue="Casado" />
+                                <f:selectItem itemLabel="Solteiro" itemValue="Solteiro" />
+                                <f:selectItem itemLabel="Viuvo" itemValue="Viuvo" />
+                                <f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
+                            </p:selectOneRadio>
+
+                            <p:outputLabel style="margin-top: 20px" value="Telefone"/>
+                            <p:inputMask mask="(99) 99999-9999" placeholder="ex: (43) 99145-5878" class="centralizar"  value="#{ManageUserManagedBean.actualUser.phone}" ></p:inputMask> 
+
+                            <p:outputLabel style="margin-top: 20px" value="Data de Nascimento "/>
+                            <p:calendar  value="#{ManageUserManagedBean.actualUser.birthDate}" showOn="button"/>
+
+                            <p:outputLabel style="margin-top: 20px" value="CEP"/>
+                            <p:inputMask mask="99999-999" placeholder="ex: 86341-000" class="centralizar"  value="#{ManageUserManagedBean.actualUser.cep}" >
+                                <f:ajax event="blur" render="@form" listener="#{ManageUserManagedBean.findCep}"/>
+                            </p:inputMask> 
+
+                            <p:outputLabel value="Cidade"/>
+                            <p:inputText placeholder="ex: Londrina" class="centralizar"  value="#{ManageUserManagedBean.actualUser.city}" /> 
+
+                            <p:outputLabel value="Estado"/>
+                            <p:inputText placeholder="ex: Parana" class="centralizar"  value="#{ManageUserManagedBean.actualUser.state}" /> 
+
+                            <p:outputLabel value="Endereço #1"/>
+                            <p:inputText placeholder="ex: Rua Carlos da Silva nº 167" class="centralizar"  value="#{ManageUserManagedBean.actualUser.address1}" /> 
+
+                            <p:outputLabel value="Endereço #2"/>
+                            <p:inputText placeholder="ex: Rua Carlos da Silva nº 167" class="centralizar"  value="#{ManageUserManagedBean.actualUser.address2}" /> 
+
+                            <p:outputLabel value="Complemento"/>
+                            <p:inputText placeholder="Ex: andar 1, salão B" class="centralizar"  value="#{ManageUserManagedBean.actualUser.complement}" /> 
+
+
+
+
+                            <p:commandButton  class="centralizar colorLink"  value="Salvar Alterações" action="#{ManageUserManagedBean.finishEditarUsuario('Public')}"/> 
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </div>
+
+            <fn:choose>
+                <fn:when test="#{ManageLogin.componentsContainer.asides.colorfulLinks}">
+                    <ui:include src="/Public/Components/Aside/ColorfulLinks.xhtml"/>
+                </fn:when>
+            </fn:choose>
+        </div>
+        <fn:choose>
+            <fn:when test="#{ManageLogin.componentsContainer.footers.defaultFooter}">
+                <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+            </fn:when>
+            <fn:when test="#{ManageLogin.componentsContainer.footers.slimFooter}">
+                <ui:include src="/Public/Components/Footers/SlimFooter.xhtml"/>
+            </fn:when>
+        </fn:choose>
+    </h:body>
+</html>
+

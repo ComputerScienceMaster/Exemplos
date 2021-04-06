@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/core">
+
+
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+
+
+    <f:metadata>
+        <f:viewAction action="#{ManageTagsManagedBean.loadTree()}"/>
+    </f:metadata>
+
+    <h:body>
+
+        <div class="content">
+            <ui:include src="/Public/Components/Headers/Header.xhtml"/>
+
+            <fn:choose>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.primeNav}">
+                    <ui:include src="/Public/Components/Navs/PrimeNav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.defaultNav}">
+                    <ui:include src="/Public/Components/Navs/Nav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.bootstrapNav}">
+                    <ui:include src="/Public/Components/Navs/BootstrapNav.xhtml"/>
+                </fn:when>
+
+            </fn:choose>
+
+            <h:form>
+                <div class="positionSideLinks tree">
+                    <div class="tituloTopico centralizar" style="margin-top: ">Classificações</div>
+
+                    <p:tree style="width:100%; float:right" dynamic="true" cache="false" value="#{ManageTagsManagedBean.tagsTree}" var="node">
+                        <p:treeNode>
+                            <p:commandLink update="@form" action="#{ManageCausesManagedBean.filterCausesByTag()}" value="#{node}" >
+                                <f:setPropertyActionListener target="#{ManageCausesManagedBean.selectedTag}" value="#{node}"/>
+                            </p:commandLink>
+                        </p:treeNode>
+                    </p:tree>
+                </div>
+                <div class="page-content">
+
+                    <div class="tituloTopico">jusHelp - Cadastro de causas</div>
+                    <div class="formElements">
+                        <div class="textoExtenso">
+                            <div class="tituloInfo">Cadastro de novos causas</div> 
+                            <br/>
+                            <p>
+                                As causas cadastradas nesta seção são trabalhos ao qual você assume. Sendo assim, cada causa pode ter seus suas próprias variáveis.
+                            </p>
+                            <p>
+                                Por exemplo: se um cliente lhe procura, no processo de entrevista você colherá todos os dados do cliente: informações pessoais,
+                                alvos do processo, testemunhas, produtos com defeito, etc. 
+                            </p>
+                            <p>
+                                É interessante notar que cada processo irá variar o número e conteúdo das variáveis. Esta seção têm o objetivo de armazenar informações
+                                dos processos no qual você trabalha para que elas possam ser acessadas posteriormente com facilidade. 
+                            </p>
+                            <p>
+                                <small>obs: para ajudar a construção das variáveis você pode definir os modelos de processos e utilizar as variáveis do modelo 
+                                    simplesmente importando estas variáveis e as preenchendo.</small>
+                            </p>
+
+                        </div>
+                        <div class="formElements" style="margin-left: 0">
+                            <h:panelGrid  columns="1" style="float:left; width: 100%; padding: 2%;">
+                                <p:inputText  placeholder="Escreva o título da causa" class="centralizar"  value="#{ManageCausesManagedBean.actualCause.name}" >
+                                </p:inputText> 
+                                
+                                <h:selectOneMenu class="form-control" style="width: 100%; margin-top: 20px" value="#{ManageCausesManagedBean.actualCause.tagidTag}" >
+                                    <f:selectItems value="#{ManageCausesManagedBean.listTags}"/>
+                                    <f:converter converterId="ConverterTags"/>
+                                </h:selectOneMenu>
+
+                                <p:commandButton  class="centralizar" style="margin-top: 20px" update="@form" value="Salvar causa" action="#{ManageCausesManagedBean.finishAddCause()}"/>
+                            </h:panelGrid>
+                        </div>
+
+                        <div class="formElements" style="margin-left: 0; float: left;">
+                            <p:inputText class="centralizar" value="#{ManageCausesManagedBean.filter}" placeholder="Digite o nome da causa para buscar" >
+                                <p:ajax event="keyup" listener="#{ManageCausesManagedBean.filterCausesByName}" update="tableCauses"/>
+                            </p:inputText>
+
+                            <div class="tablePannel smallMargin" style="float:left; margin-bottom: 3%">
+                                <p:dataTable id="tableCauses" var="cli" paginator="true" rows="10" value="#{ManageCausesManagedBean.listCauses}">
+
+                                    <p:column headerText="Nome da causa">
+                                        <h:outputText value="#{cli.name}" />
+                                    </p:column>
+
+                                    <p:column headerText="Classificação">
+                                        <h:outputText value="#{cli.tagidTag.title}" />
+                                    </p:column>
+
+                                    <p:column style="width: 18%" headerText="Ações">
+                                        <p:commandButton icon="ui-icon-info"  action="#{ManageCausesManagedBean.goToManageVariable()}" >
+                                            <f:setPropertyActionListener target="#{ManageCausesManagedBean.actualCause}" value="#{cli}"/>
+                                        </p:commandButton>
+
+                                        <p:commandButton icon="ui-icon-close" action="#{ManageCausesManagedBean.removeCause()}" update="@form" >
+                                            <f:setPropertyActionListener target="#{ManageCausesManagedBean.actualCause}" value="#{cli}"/>
+                                            <p:confirm header="Confirmação" message="Você tem certeza que deseja excluir esta causa?" icon="ui-icon-alert" />
+                                        </p:commandButton>
+
+                                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                        </p:confirmDialog>
+
+                                        <p:commandButton icon="ui-icon-pencil" action="#{ManageCausesManagedBean.goToEditCause()}">
+                                            <f:setPropertyActionListener target="#{ManageCausesManagedBean.actualCause}" value="#{cli}"/>
+                                        </p:commandButton>
+
+                                    </p:column>
+                                </p:dataTable>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+
+
+        <fn:choose>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.defaultFooter}">
+                <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+            </fn:when>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.slimFooter}">
+                <ui:include src="/Public/Components/Footers/SlimFooter.xhtml"/>
+            </fn:when>
+        </fn:choose>
+    </h:body>
+</html>
+

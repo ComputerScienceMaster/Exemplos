@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:include src="/Private/Includes/HeadIncludesAdmin.xhtml" />
+    <f:metadata>
+        <f:viewAction action="#{ManageAdminBean.loadAdmins()}"/>
+    </f:metadata>
+    <h:body>
+
+        <div class="content">
+
+            <div class="cabecalho">
+                <ui:include src="/Private/Components/Headers/DefaultAdminHeader.xhtml" />
+            </div>
+            <ui:include src="/Private/Components/Navs/DefaultAdminNav.xhtml" />
+            <h:form>
+                <div class="page-content">
+                    <h1 class="tituloTopico">Painel administrativo</h1>
+                    <div class="formWhiteBackground">
+                        <p:growl autoUpdate="true"/>
+                        <h:dataTable id="adminTable" class="table table-bordered " var="cat" value="#{ManageAdminBean.administrator}">
+                            <h:column>
+                                <h:outputText value="#{cat.loginAdministrator}"/>
+                            </h:column>
+                            <h:column>
+                                <h:commandButton value="Editar"  class="form-control" action="#{ManageAdminBean.gotoEditAdministrator()}">
+                                    <f:setPropertyActionListener target="#{ManageAdminBean.actualAdministrator}" value="#{cat}"/>
+                                </h:commandButton>
+                                <h:commandButton value="Excluir" class="form-control" action="#{ManageAdminBean.removeAdministrator()}">
+                                    <f:setPropertyActionListener target="#{ManageAdminBean.actualAdministrator}" value="#{cat}"/>
+                                    <p:ajax event="click" update="adminTable"/>
+                                </h:commandButton>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+        <ui:include src="/Private/Components/Footers/SlimFooter.xhtml"/>
+    </h:body>
+
+</html>
+

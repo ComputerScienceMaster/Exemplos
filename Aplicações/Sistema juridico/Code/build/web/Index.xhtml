@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+    <h:body>
+
+        <div class="content">
+
+            <ui:include src="/Public/Components/Headers/Header.xhtml"/>
+            
+            
+            <fn:choose>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.primeNav}">
+                    <ui:include src="/Public/Components/Navs/PrimeNav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.defaultNav}">
+                    <ui:include src="/Public/Components/Navs/Nav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.bootstrapNav}">
+                    <ui:include src="/Public/Components/Navs/BootstrapNav.xhtml"/>
+                </fn:when>
+              
+            </fn:choose>
+
+
+            <div class="page-content">
+
+
+                <div class="tituloTopico">O que é o JusHelp</div>
+
+                <article class="textoExtenso">
+
+                    O JusHelp é um sistema criado para advogados que desejam agilizar seu serviço.
+                    Utilizando uma base de dados criada pelo próprio advogado, o sistema busca reutilizar 
+                    trechos e modelos previamente criados.
+                </article>
+
+                <div class="tituloTopico">O que é possível fazer com o JusHelp?</div>
+
+                <article  class="textoExtenso">
+
+                    Utilizando o JusHelp é possível cadastrar os dados dos seus clientes, modelos e trechos mais utilizados.
+                    
+                    Após cadastrados, estes dados serão combinados de forma bastante ágil e fácil, possibilitando a criação de documentos
+                    em minutos. A reutilização de informações é o foco do nosso sistema, desta forma o profissional de direito economiza tempo
+                    na estrutuação de documentos e focando em atender outros tipos de demanda.
+                </article>
+
+
+
+            </div>
+            
+            <fn:choose>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.asides.colorfulLinks}">
+                    <ui:include src="/Public/Components/Aside/ColorfulLinks.xhtml"/>
+                </fn:when>
+            </fn:choose>
+            
+
+        </div>
+        <fn:choose>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.defaultFooter}">
+                <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+            </fn:when>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.slimFooter}">
+                <ui:include src="/Public/Components/Footers/SlimFooter.xhtml"/>
+            </fn:when>
+        </fn:choose>
+
+
+    </h:body>
+</html>
+

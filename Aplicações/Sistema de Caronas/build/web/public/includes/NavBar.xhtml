@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p ="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:form>
+        <nav class="navbar navbar-toggleable-md navbar-dark bg-dark">
+            <c:choose>
+                <c:when test="#{UserAccountManagedBean.anyoneLoggedIn}">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <h:commandLink styleClass="navbar-brand" value="Caronas" action="/public/manageTravel/ManageTravel.xhtml?faces-redirect=true"/>
+
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <h5 class="text-white nav-item-personal" >Viagens</h5>
+                                <h:commandLink styleClass="nav-link" value="Cadastrar" action="#{travelManagedBean.gotoAddTravel()}">
+                                    <span class="sr-only"></span>
+                                </h:commandLink>
+                                <h:commandLink styleClass="nav-link" value="Listar" action="#{travelManagedBean.gotoListTravels()}">
+                                    <span class="sr-only"></span>
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item">
+                                <h5 class="text-white nav-item-personal">Carros</h5>
+                                <h:commandLink styleClass="nav-link" value="Cadastrar" action="#{CarManagedBean.gotoAddCars()}">
+                                    <span class="sr-only"></span>
+                                </h:commandLink>
+                                <h:commandLink styleClass="nav-link" value="Listar" action="#{CarManagedBean.gotoListCars()}">
+                                    <span class="sr-only"></span>
+                                </h:commandLink>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <h5 class="text-white nav-item-personal">Contatos</h5>
+                                <h:commandLink styleClass="nav-link" value="Listar" action="#{UserAccountManagedBean.gotoListUsers()}">
+                                    <span class="sr-only">#{UserAccountManagedBean.gotoListUsers()}</span>
+                                </h:commandLink>
+                            </li>
+
+                            <li class="nav-item">
+                                <h5 class="text-white nav-item-personal">Minha conta</h5>
+                                <h:commandLink styleClass="nav-link" value="Meu perfil" action="#{UserAccountManagedBean.gotoEditMyProfile()}">
+                                    <span class="sr-only"></span>
+                                </h:commandLink>
+                                <h:commandLink styleClass="nav-link" value="Sair" action="#{UserAccountManagedBean.logout()}">
+                                    <span class="sr-only"></span>
+                                </h:commandLink>
+                            </li>
+
+                        </ul>
+                    </div>
+                </c:when>
+                <c:when test="#{not UserAccountManagedBean.anyoneLoggedIn}">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <h:commandLink styleClass="navbar-brand" value="Caronas" action="/index.xhtml?faces-redirect=true"/>
+
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <h5 class="text-white">Viagens</h5>
+                                <h:commandLink styleClass="nav-link" value="Quem somos Nós" action="/WhoWeAre.xhtml?faces-redirect=true}">
+                                    <span class="sr-only"></span>
+                                </h:commandLink>
+                            </li>
+                        </ul>
+                    </div>
+                </c:when>
+            </c:choose>
+        </nav>
+    </h:form>
+</ui:composition>

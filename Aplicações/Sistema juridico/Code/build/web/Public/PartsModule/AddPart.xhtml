@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+
+
+    <f:metadata>
+        <f:viewAction action="#{ManagePartsManagedBean.loadTree()}"/>
+    </f:metadata>
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+
+    <h:body>
+
+        <div class="content">
+            <ui:include src="/Public/Components/Headers/Header.xhtml"/>
+
+            <fn:choose>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.primeNav}">
+                    <ui:include src="/Public/Components/Navs/PrimeNav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.defaultNav}">
+                    <ui:include src="/Public/Components/Navs/Nav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.bootstrapNav}">
+                    <ui:include src="/Public/Components/Navs/BootstrapNav.xhtml"/>
+                </fn:when>
+
+            </fn:choose>
+
+
+            <div class="page-content">
+
+
+
+                <div class="tituloTopico">jusHelp - Adicione um trecho</div>
+
+                <div class="formElements centralizar" style="float: left">
+                    <p:accordionPanel activeIndex="null">
+                        <p:tab title="Instrucoes sobre os trechos">
+                            <div class="formElements">
+                                <div class="textoExtenso"> Os trechos inseridos aqui poderão ser substituidos nos documentos posteriormente, ou seja, 
+                                    é muito interessante que você deixe seus modelos o mais genérico possível. Pois desta forma eles podem ser reutilizados
+                                    com grande facilidade.
+                                </div>
+                            </div>
+                        </p:tab>
+                        <p:tab title="Consultar variaveis do cadastro dos clientes">
+                            <div class="formElements" style="font-size: 18px">
+
+                                <div>Utilize as marcações variáveis padrão para substituir dados dinâmicamente:</div>
+
+                                <li>!#nomeCompleto#! - Para adicionar o nome do cliente</li>
+                                <li>!#cpf#! - Para adicionar cpf do cliente</li>
+                                <li>!#nacionalidade#! - Para adicionar a nacionalidade do cliente</li>
+                                <li>!#dataDeNascimento#! - Para adicionar a data de nascimento do cliente</li>
+                                <li>!#estadoCivil#! - Para adicionar o estado civil do cliente</li>
+                                <li>!#ocupacao#! - Para adicionar a ocupação do cliente</li>
+                                <li>!#ctps#! - Para adicionar o número da carteira de trabalho do cliente</li>
+                                <li>!#rg#! - Para adicionar o número do RG do cliente</li>
+                                <li>!#rgEstado#! - Para adicionar estado de emissão do RG do cliente</li>
+                                <li>!#rgEmissor#! - Para adicionar Orgão emissor do RG do cliente (Ex: ssp)</li>
+                                <li>!#bairro#! - Para adicionar o bairro do cliente</li>
+                                <li>!#endereco1#! - Para adicionar endereço primário do cliente</li>
+                                <li>!#endereco2#! - Para adicionar endereço secundário do cliente</li>
+                                <li>!#cidade#! - Para adicionar a cidade do cliente</li>
+                                <li>!#estado#! - Para adicionar estado que o cliente reside</li>
+                                <li>!#comarca#! - Para adicionar a comarca do cliente</li>
+                                <li>!#tituloDeEleitor#! - Para adicionar o título de eleitor do cliente</li>
+                                <li>!#email#! - Para adicionar o e-mail do cliente</li>
+                                <li>!#dataAtual#! - Para adicionar a data no formato 22/10/2017</li>
+                                <li>!#dataAtualExtenso#! - Para adicionar a data no formato "12 de outubro de 2017</li>
+                            </div>
+                        </p:tab>
+                        <p:tab title="Consulte as variaveis das causas">
+                            <h:form>
+                                <div class="formElements">
+
+                                    <div class="tituloInfo" style="margin-bottom: 5%" >Utilize as variáveis abaixo para montar o seu modelo</div>
+                                    <div class="textoExtenso">As variáveis a seguir serão substituidas no documento final, portanto utilize as variáveis de acordo com 
+                                        o processo cadastrado. É possível reutilizar estas variáveis definindo-as diversas vezes em vários modelos.<br/><br/>
+                                        Por exemplo, se você define em um processo a variável !#nomeDoCarro#!, você deverá criar um modelo específico que consome esta
+                                        variável. Assim, você pode reaproveitar esta variáveis utilizando as mesmas marcações. 
+                                    </div>
+
+                                    <div>Digite o nome do processo para buscar</div>
+
+                                    <p:inputText class="centralizar" value="#{ManagePartsManagedBean.filter}">
+                                        <p:ajax update="variableList" event="keyup" listener="#{ManagePartsManagedBean.filterTrialsByName()}"/>
+                                    </p:inputText>
+
+                                    <div class="formElements">
+                                        <p:dataTable id="variableList" paginator="true" rows="10" var="car" value="#{ManagePartsManagedBean.listTrials}">
+                                            <p:column headerText="Nome do modelo">
+                                                <h:outputText value="#{car.name}" />
+                                            </p:column>
+
+                                            <p:column headerText="Ações">
+                                                <p:commandButton icon="ui-icon-search" oncomplete="PF('trialVariables').show();" update="dialogVariableList" action="#{ManagePartsManagedBean.refreshVariables}" value="Ver variaveis" >
+                                                    <f:setPropertyActionListener target="#{ManagePartsManagedBean.actualTrials}" value="#{car}"/>
+                                                </p:commandButton>
+                                                <p:dialog id="dialogVariableList" header="Lista de variáveis" widgetVar="trialVariables" modal="true" >
+                                                    <div class="formElements">
+                                                        <p:dataTable style="width: 550px" var="var" value="#{ManagePartsManagedBean.actualTrials.variableList}">
+                                                            <p:column headerText="Nome da variável">
+                                                                #{var.variableName}
+                                                            </p:column>
+                                                            <p:column headerText="Conteúdo da variável">
+                                                                #{var.variableContent}
+                                                            </p:column>
+                                                        </p:dataTable>
+                                                    </div>
+                                                </p:dialog>   
+                                            </p:column>
+                                        </p:dataTable>
+
+                                    </div>
+                                </div>
+                            </h:form>
+                        </p:tab>
+                    </p:accordionPanel>
+                </div>
+
+                <h:form>
+
+
+                    <div class="formElements">
+                        <h:panelGrid  columns="1" style="float:left; width: 100%; padding: 2%;">
+
+                            <p:outputLabel value="Título"/>
+                            <p:inputText  placeholder="Escreva o título do trecho" class="centralizar"  value="#{ManagePartsManagedBean.actualDocumentpart.title}" >
+                            </p:inputText> 
+
+                            <p:outputLabel value="Resumo"/>
+                            <p:inputTextarea  value="#{ManagePartsManagedBean.actualDocumentpart.summary}" class="centralizar" style="margin-bottom:10px;"/>
+
+
+                            <p:outputLabel value="Adicione sua parte abaixo"/>
+                            <pe:ckEditor  value="#{ManagePartsManagedBean.actualDocumentpart.corpus}" width="100%" class="centralizar" />
+
+                            <p:selectOneMenu effect="fade"  style="width: 100%; margin-top: 20px" value="#{ManagePartsManagedBean.actualDocumentpart.partidPart}" >
+                                <f:selectItems value="#{ManagePartsManagedBean.listTags}"/>
+                                <f:converter converterId="ConverterTags"/>
+                            </p:selectOneMenu>
+
+
+                            <p:commandButton  class="centralizar" style="margin-top: 20px" value="Salvar trecho de documento" action="#{ManagePartsManagedBean.finishAdicionarDocumentpart()}"/>
+
+                        </h:panelGrid>
+                    </div>
+
+                </h:form>
+
+
+            </div>
+
+            <div class="positionSideLinks tree">
+                <div class="tituloTopico centralizar" style="margin-top: ">Classificações</div>
+                <div></div>
+                <h:form>
+
+                    <p:tree style="width:100%; float:right" dynamic="true" cache="false" value="#{ManagePartsManagedBean.root}" var="node">
+                        <p:treeNode>
+                            <p:commandLink update="@form" value="#{node}" >
+                                <f:setPropertyActionListener target="#{ManagePartsManagedBean.selectedTag}" value="#{node}"/>
+                            </p:commandLink>
+                        </p:treeNode>
+                    </p:tree>
+
+                    <div class="boardManipulateTag">
+
+
+                        <div class="tituloTopico">Opções</div>
+
+                        <h:outputText value="Selecione uma ação" />
+                        <h:panelGrid columns="1" style="margin-bottom:10px" >
+                            <p:selectOneRadio layout="pageDirection" columns="1"  value="#{ManagePartsManagedBean.tagTypeOfInsertion}">
+                                <f:selectItem itemLabel="Adicionar Classificação" itemValue="newClassification"  />
+                                <f:selectItem itemLabel="Remover Classificação" itemValue="removeClassification"  />
+                                <f:selectItem itemLabel="Editar Classificação" itemValue="editClassification"  />
+                                <p:ajax update="@form" />
+                            </p:selectOneRadio>
+                        </h:panelGrid>
+
+                        <p:separator/>
+                        <fn:choose >
+
+                            <fn:when test="#{ManagePartsManagedBean.newClassificationSelected}">
+
+                                <h:panelGrid columns="1">
+                                    <h:outputText style="font-weight: bold" value="Adicionar Classificação"/>
+                                    <br/>
+                                    <h:outputText value="Selecione uma classificação no menu acima para adicionar uma subclassificação"/>
+
+                                    <fn:if test="${empty ManagePartsManagedBean.selectedTag.title}">
+                                        <h:outputText class="tituloInfo" value="Nenhuma tag selecionada"/>
+                                    </fn:if>
+                                    <fn:if test="${not empty ManagePartsManagedBean.selectedTag.title}">
+                                        <p:commandLink update="@form" class="tituloInfo" value="Tag selecionada: #{ManagePartsManagedBean.selectedTag}" action="#{ManagePartsManagedBean.unselectTag}"/>
+                                    </fn:if>
+
+                                    <p:inputText class="centralizar" value="#{ManagePartsManagedBean.actualTag.title}"/>
+                                    <p:commandButton  style="margin-top: 10px" class="centralizar" value="Adicionar Classificação" update="@form" action="#{ManagePartsManagedBean.finishAddTag()}"/>
+                                </h:panelGrid>
+                            </fn:when>  
+
+                            <fn:when test="#{ManagePartsManagedBean.removeClassificationSelected}">
+
+                                <h:panelGrid columns="1">
+                                    <h:outputText style="font-weight: bold" value="Remover classificação"/>
+                                    <br/>
+                                    <h:outputText value="Selecione uma classificação e clique em remover classificação"/>
+
+                                    <fn:if test="${empty ManagePartsManagedBean.selectedTag.title}">
+                                        <h:outputText class="tituloInfo" value="Nenhuma tag selecionada"/>
+                                    </fn:if>
+                                    <fn:if test="${not empty ManagePartsManagedBean.selectedTag.title}">
+                                        <p:commandLink update="@form" class="tituloInfo" value="Tag selecionada: #{ManagePartsManagedBean.selectedTag}" action="#{ManagePartsManagedBean.unselectTag}"/>
+                                    </fn:if>
+                                    <p:commandButton style="margin-top: 10px" class="centralizar" value="Remover classificação" update="@form" action="#{ManagePartsManagedBean.removeTag()}"/>
+                                </h:panelGrid>
+                            </fn:when>  
+
+
+                            <fn:when test="#{ManagePartsManagedBean.editClassificationSelected}">
+
+                                <h:panelGrid columns="1">
+                                    <h:outputText style="font-weight: bold" value="Editar Classificação"/>
+                                    <br/>
+                                    <h:outputText value="Selecione uma classificação no menu acima, digite o novo nome para a classificação e salve as alterações"/>
+
+                                    <p:inputText class="centralizar" style="margin-top: 10px" disabled="true" value="#{ManagePartsManagedBean.selectedTag.title}"/>
+                                    <p:inputText class="centralizar" style="margin-top: 10px"  value="#{ManagePartsManagedBean.actualTag.title}"/>
+                                    <p:commandButton  style="margin-top: 10px" class="centralizar" value="Salvar Alterações" update="@form" action="#{ManagePartsManagedBean.finishEditTag()}"/>
+                                </h:panelGrid>
+                            </fn:when> 
+                        </fn:choose>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        <fn:choose>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.defaultFooter}">
+                <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+            </fn:when>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.slimFooter}">
+                <ui:include src="/Public/Components/Footers/SlimFooter.xhtml"/>
+            </fn:when>
+        </fn:choose>
+    </h:body>
+</html>
+

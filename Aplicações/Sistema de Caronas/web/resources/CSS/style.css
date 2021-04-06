@@ -1,0 +1,180 @@
+.texto-footer{
+    float: left;
+    padding: 1%;
+    margin-top: 0%;
+    color: #3e3e3e;
+    font-size: 12px; 
+    font-family: sans-serif;
+    text-align: center;
+}
+
+
+.contatos div{
+    font-family: sans-serif;
+    font-size: 15px;
+    color: #3e3e3e;
+    font-weight: 100;
+    padding-top: 4%;
+}
+
+.endereco{
+    margin-top: 3%;
+    font-size: 15px;
+    color: #3e3e3e;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.compartilhe{
+    margin-top: 3%;
+    text-align: center;
+}
+
+.contatos{
+    margin-top: 3%;
+    text-align: center;
+}
+
+.footer h4{
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 19px;
+    padding: 1.5%;
+    color: #fff;
+    font-weight: 100;
+    border-radius: 6px 6px 6px 6px;
+    background-color: #d6d8d9;
+}
+
+.img-main-icon{
+    margin-top: 50px;
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.todosDireitosReservados{
+    clear: both;
+    padding: 1%;
+    color: #3e3e3e; 
+    font-size: 15px; 
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.imgFot{
+    max-width: 20%;
+    max-height: 20%;
+}
+
+.footer {
+    float: left;
+    margin-top: 30px;
+    background-color: #f1f1f1;
+}
+
+.nav-item-personal{
+    margin: 5px; 
+    padding: 5px; 
+    background-color: #575757; 
+    border-radius: 5px 5px 5px 5px;
+}
+
+.index-carona-container{
+    width: 400px;
+}
+
+/* List Item travel*/
+.travelIcon{
+    width: 100%;
+    height: 100%;
+}
+
+.travel{
+    float: left;
+    background-color: #373c42; 
+    border: none;
+    color: white;
+    padding: 1%;
+    border-radius: 5px 5px 5px 5px;
+    text-align: left;
+    margin: 1%;
+    text-decoration: none;
+    font-size: 16px;
+    width: 100%;
+}
+
+.left{
+    float: left;
+    width: 10%;
+    margin: 1.5%;
+}
+
+.right{
+    float: left;
+    width: 81.5%;
+}
+
+/* item detail travel */
+
+.detailContainer{
+    float: left;
+    width: 100%;
+    padding: 1%;
+    background-color: #d6d8d9;
+}
+
+.detailsTravelElements{
+    float: left;
+    padding: 1%;
+    width: 75%;
+}
+
+.travelIconDetails{
+    float: left;
+    width: 15%;
+    height: 15%;
+}
+
+
+.formInsertTask{
+    width: 100%;
+    float: left;
+    margin-top: 1%;
+    padding: 2%;
+    background-color: #f1f1f1;
+}
+
+.taskList{
+    width: 100%;
+    float: left;
+    margin-top: 1%;
+    padding: 2%;
+    background-color: #fafafa;
+}
+
+.taskIcon{
+    width: 50%;
+    height: 50%;
+}
+
+
+/* users list */
+
+.userIcon{
+    width: 55%;
+    height: 100%;
+}
+
+.row-user{
+    float: left;
+    width: 100%;
+    border: dashed 1px #aaa;
+}
+
+.userListContainer{
+    float: left;
+    width: 100%;
+    margin-top: 10px ; 
+    background-color: #f1f1f1;
+    border-radius: 5px 5px 5px 5px;
+}

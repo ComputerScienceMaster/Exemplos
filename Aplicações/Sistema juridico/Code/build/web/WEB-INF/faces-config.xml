@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <application>
+        <locale-config>
+            <default-locale>pt_BR</default-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>resources.messages</base-name>
+            <var>messages</var>
+        </resource-bundle>
+    </application>
+    
+    <managed-bean>
+        <managed-bean-name>ManageLoginManagedBean</managed-bean-name>
+        <managed-bean-class>View.ManageLoginManagedBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>ManageUserManagedBean</managed-bean-name>
+        <managed-bean-class>View.ManageUserManagedBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>ManageClientManagedBean</managed-bean-name>
+        <managed-bean-class>View.ManageClientManagedBean</managed-bean-class>
+   
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>ManagePartsManagedBean</managed-bean-name>
+        <managed-bean-class>View.ManagePartsManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+        
+    <managed-bean>
+        <managed-bean-name>ManageModelsManagedBean</managed-bean-name>
+        <managed-bean-class>View.ManageModelsManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>ManageDocumentsManagedBean</managed-bean-name>
+        <managed-bean-class>View.ManageDocumentsManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>ManageTrialsManagedBean</managed-bean-name>
+        <managed-bean-class>View.ManageTrialsManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>ManageTagsManagedBean</managed-bean-name>
+        <managed-bean-class>View.ManageTagsManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>ManageCausesManagedBean</managed-bean-name>
+        <managed-bean-class>View.ManageCausesManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <converter>
+        <converter-id>ConverterDocumentParts</converter-id>
+        <converter-class>Converters.ConverterDocumentParts</converter-class>
+    </converter>
+    
+    <converter>
+        <converter-id>ConverterDocumentModel</converter-id>
+        <converter-class>Converters.ConverterDocumentModel</converter-class>
+    </converter>
+  
+    <converter>
+        <converter-id>ConverterTags</converter-id>
+        <converter-class>Converters.ConverterTags</converter-class>
+    </converter>
+    
+    <converter>
+        <converter-id>ConverterClients</converter-id>
+        <converter-class>Converters.ConverterClients</converter-class>
+    </converter>
+    
+    <converter>
+        <converter-id>ConverterTrials</converter-id>
+        <converter-class>Converters.ConverterTrials</converter-class>
+    </converter>
+  
+    
+</faces-config>

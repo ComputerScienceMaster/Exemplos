@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+    <h:body>
+
+        <div class="content">
+            <ui:include src="/Public/Components/Headers/Header.xhtml"/>
+            <ui:include src="/Public/Components/Navs/DefaultNav.xhtml"/>
+
+            <div class="page-content">
+                <div class="tituloTopico">Adicionar um novo Livro</div>
+                <div class="textoExtenso">
+                   Adicione novas obras, preencha o formulário e clique em salvar.<br/><br/>
+                </div>
+
+                <p:growl autoUpdate="true"/>
+
+                <h:form style="float:left; width: 90%; margin: 3%">
+                    <div  class="formWhiteBackground">
+                        <div class="form-group">
+                            <h:inputText class="form-control" 
+                                         a:placeholder="Digite o nome do Livro" 
+                                         required="true" 
+                                         requiredMessage="O campo nome precisa ser preenchido"
+                                         value="#{ManageBookBean.actualBook.nameBook}"/>
+                        </div>
+                         <div class="form-group">
+                            <h:inputText class="form-control" 
+                                         a:placeholder="Digite o nome do autor do livro" 
+                                         value="#{ManageBookBean.actualBook.authorBook}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:inputText class="form-control" 
+                                         a:placeholder="Digite o resumo do livro" 
+                                         value="#{ManageBookBean.actualBook.abstractBook}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:inputText class="form-control" 
+                                         a:placeholder="Digite número de páginas do livro" 
+                                         value="#{ManageBookBean.actualBook.pagesBook}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:inputText class="form-control" 
+                                         a:placeholder="Digite a editora do livro" 
+                                         value="#{ManageBookBean.actualBook.publisherBook}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:inputText class="form-control" 
+                                         a:placeholder="Digite a língua em que o livro está escrito" 
+                                         value="#{ManageBookBean.actualBook.languageBook}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:inputText class="form-control" 
+                                         a:placeholder="Digite o país de origem do livro" 
+                                         value="#{ManageBookBean.actualBook.countryBook}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:inputText class="form-control" 
+                                         a:placeholder="Digite o resumo Gênero do Livro" 
+                                         value="#{ManageBookBean.actualBook.genreBook}"/>
+                        </div>
+                        <div class="form-group">
+                            <h:commandButton class="form-control" 
+                                             action="#{ManageBookBean.editBook()}"
+                                             value="Salvar"/>
+                        </div>
+                    </div>
+                </h:form>
+
+
+               
+            </div>
+            <ui:include src="/Public/Components/Aside/ColorfulLinks.xhtml"/>
+        </div>
+        <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+    </h:body>
+</html>
+

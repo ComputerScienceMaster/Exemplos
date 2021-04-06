@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p ="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+   
+    <div class="footer">
+        <div class="texto-footer" >#{messages.independentProduction}</div>
+
+        <div class="endereco ">
+            <h4>#{messages.address}</h4>
+            <div>#{ManageLogin.componentsContainer.generalInformation.cityState}</div>
+            <div>#{ManageLogin.componentsContainer.generalInformation.address}</div>
+            <div>#{ManageLogin.componentsContainer.generalInformation.zipCode}</div>
+        </div>
+
+        <div class="compartilhe">
+            <h4>#{messages.share}</h4>
+            <p:graphicImage name="images/rss-icon.png" class="imgFot" alt="rss-icon"/>
+            <a href="#{ManageLogin.componentsContainer.generalInformation.facebook}">
+                <p:graphicImage name="images/facebook.png" class="imgFot" alt="facebook"/>
+            </a>
+            <p:graphicImage name="images/twitter.png" class="imgFot" alt="twitter"/>
+        </div>
+
+        <div class="contatos">
+            <h4>#{messages.contact}</h4>
+            <div>#{messages.contactMessage}</div>
+            <div>#{ManageLogin.componentsContainer.generalInformation.email}</div>            
+        </div>
+
+        <div class="todosDireitosReservados">
+            <p:commandLink action="#{ManageAdminBean.gotoLogin()}" value="#{messages.atributtion}"/>
+        </div>
+
+    </div>
+</ui:composition>

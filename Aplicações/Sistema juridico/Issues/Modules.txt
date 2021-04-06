@@ -1,0 +1,46 @@
+Module
+
+1- Cliente 
+	- cadastro e manipulação de todos os dados de um cliente
+	- Busca de dados a partir do CPF CNPJ
+	- Importar CEP 
+	- Importar Dados pré existentes (excel-XML)
+
+	- Cadastro do réu ( pessoa que está sendo processada )
+	- Cadastro de Testemunhas
+	- Cadastro de advogados parceiros
+	- 
+
+
+2-  
+
+Cadastro de trechos  - 
+
+Cadastro de varios níveis (infinitos) Arvore
+
+	- Direito trabalhista
+		- Fgts
+		- Ferias
+			- 1/3 ferias
+			- nunca tirou ferias 
+		- 13 salario
+
+
+Cadastro de modelos - 
+
+	- Camara
+		-decreto 
+		-portaria
+		-proj. de lei
+		-parecer
+
+	- advogado
+		- direito civil
+			ação de despejo
+
+
+
+3- Requisitos
+
+	exportar para word e pdf
+	

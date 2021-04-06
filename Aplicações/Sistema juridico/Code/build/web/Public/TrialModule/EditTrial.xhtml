@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+
+
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+
+    <h:body>
+
+        <div class="content">
+            <ui:include src="/Public/Components/Headers/Header.xhtml"/>
+
+            <fn:choose>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.primeNav}">
+                    <ui:include src="/Public/Components/Navs/PrimeNav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.defaultNav}">
+                    <ui:include src="/Public/Components/Navs/Nav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.bootstrapNav}">
+                    <ui:include src="/Public/Components/Navs/BootstrapNav.xhtml"/>
+                </fn:when>
+
+            </fn:choose>
+
+
+            <div class="page-content">
+
+
+
+                <div class="tituloTopico">jusHelp - Edite o processo</div>
+
+
+
+                <div>Utilize esta interface para editar os dados do processo </div>
+
+                <h:form>
+
+                    <p:panelGrid  columns="1" style="float:left; width: 100%; padding: 2%;">
+
+                        <p:outputLabel value="Nome do processo"/>
+                        <p:inputText  placeholder="Escreva o título do processo" class="centralizar"  value="#{ManageTrialsManagedBean.actualTrial.name}" >
+                        </p:inputText> 
+
+                        <p:selectOneMenu effect="fade"  style="width: 100%; margin-top: 20px" value="#{ManageTrialsManagedBean.actualTrial.tagidTag}" >
+                            <f:selectItems value="#{ManageTrialsManagedBean.listTags}"/>
+                            <f:converter converterId="ConverterTags"/>
+                        </p:selectOneMenu>
+                        <p:commandButton  class="centralizar" value="Salvar processo" action="#{ManageTrialsManagedBean.finishEditTrial()}"/>
+
+                    </p:panelGrid>
+
+
+                </h:form>
+
+
+            </div>
+
+
+        </div>
+        <fn:choose>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.defaultFooter}">
+                <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+            </fn:when>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.slimFooter}">
+                <ui:include src="/Public/Components/Footers/SlimFooter.xhtml"/>
+            </fn:when>
+        </fn:choose>
+    </h:body>
+</html>
+

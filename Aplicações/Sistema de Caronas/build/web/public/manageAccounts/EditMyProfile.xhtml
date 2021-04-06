@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:j="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:include src="../includes/HeadIncludesPublic.xhtml"/>
+    
+    <f:metadata>
+        <f:viewAction action="#{UserAccountManagedBean.loadSectors()}"/>
+    </f:metadata>
+    <body>
+        <ui:include src="../includes/NavBar.xhtml"/>
+
+        <div class="container">
+            <div class="starter-template" style="margin-top: 9%">
+                <h:form>
+                    <p:growl autoUpdate="true"/>
+                    <div class="jumbotron">
+                        <h5>Defina o usuário e senha</h5>
+                        <div class="form-group">
+                            <h:outputText styleClass="form-control" value="Usuário"></h:outputText>
+                            <h:inputText disabled="true" styleClass="form-control" value="#{UserAccountManagedBean.actualUserAccount.userLogin}"></h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <h:outputText styleClass="form-control" value="Digite sua senha"></h:outputText>
+                            <h:inputText id="senhas" styleClass="form-control" a:type="password" value="#{UserAccountManagedBean.typePassword}"></h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <h:outputText styleClass="form-control" value="Digite a sua senha novamente"></h:outputText>
+                            <h:inputText styleClass="form-control" a:type="password" value="#{UserAccountManagedBean.verifyPassword}"></h:inputText>
+                        </div>
+                    </div>
+
+                    <div class="jumbotron">
+                        <div class="form-group">
+                            <h:outputText styleClass="form-control" value="Nome"></h:outputText>
+                            <h:inputText styleClass="form-control" required="true" requiredMessage="Este campo é de preenchimento obrigatório" value="#{UserAccountManagedBean.actualUserAccount.userName}"></h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <h:outputText styleClass="form-control" value="Telefone"></h:outputText>
+                            <h:inputText styleClass="form-control" required="true" requiredMessage="Este campo é de preenchimento obrigatório" a:type="tel" value="#{UserAccountManagedBean.actualUserAccount.phone}"></h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <h:outputText styleClass="form-control" value="Setor de trabalho"></h:outputText>
+                            <h:selectOneMenu id="selectTheSector" requiredMessage="É obrigatório selecionar um setor" required="true" styleClass="form-control" value="#{UserAccountManagedBean.actualUserAccount.sectoridSector}">
+                                <f:selectItems value="#{UserAccountManagedBean.listOfSectors}" var="set" itemLabel="#{set.name}" itemValue="#{set}"/>
+                                <f:converter converterId="ConvertSectors"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group">
+                            <h:outputText styleClass="form-control" value="E-mail"></h:outputText>
+                            <h:inputText styleClass="form-control" required="true" requiredMessage="Este campo é de preenchimento obrigatório" a:type="email" value="#{UserAccountManagedBean.actualUserAccount.email}"></h:inputText>
+                        </div>
+                    </div>
+                    <p:commandButton styleClass="form-control btn btn-primary" style="margin-bottom: 1%" value="Finalizar alterações" action="#{UserAccountManagedBean.editUserAccount()}"></p:commandButton>
+                </h:form>
+            </div>
+        </div>
+    </body>
+    <ui:include src="../includes/Footer.xhtml"/>
+</html>

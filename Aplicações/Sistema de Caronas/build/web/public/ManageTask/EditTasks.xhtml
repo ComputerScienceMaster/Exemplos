@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:j="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:include src="../includes/HeadIncludesPublic.xhtml"/>
+    <body>
+        <ui:include src="../includes/NavBar.xhtml"/>
+
+        <div class="container">
+            <div class="starter-template" style="margin-top: 9%">
+                <h:form>
+                    <div class="form-group">
+                        <h:outputText styleClass="form-control" value="user"></h:outputText>
+                        <h:inputText styleClass="form-control" value="#{UserAccountManagedBean.actualUserAccount.userLogin}"></h:inputText>
+                    </div>
+                    <div class="form-group">
+                        <h:outputText styleClass="form-control" value="password"></h:outputText>
+                        <h:inputText styleClass="form-control" value="#{UserAccountManagedBean.actualUserAccount.password}"></h:inputText>
+                    </div>
+                    <div class="form-group">
+                        <h:outputText styleClass="form-control" value="name"></h:outputText>
+                        <h:inputText styleClass="form-control" value="#{UserAccountManagedBean.actualUserAccount.userName}"></h:inputText>
+                    </div>
+                    <div class="form-group">
+                        <h:outputText styleClass="form-control" value="phone number"></h:outputText>
+                        <h:inputText styleClass="form-control" value="#{UserAccountManagedBean.actualUserAccount.phone}"></h:inputText>
+                    </div>
+                    <div class="form-group">
+                        <h:outputText styleClass="form-control" value="work sector"></h:outputText>
+                        <h:inputText styleClass="form-control" value="#{UserAccountManagedBean.actualUserAccount.sector}"></h:inputText>
+                    </div>
+                    <div class="form-group">
+                        <h:outputText styleClass="form-control" value="email"></h:outputText>
+                        <h:inputText styleClass="form-control" value="#{UserAccountManagedBean.actualUserAccount.email}"></h:inputText>
+                    </div>
+                    <h:commandButton styleClass="btn btn-primary" value="Salvar Alterações" action="#{UserAccountManagedBean.editUserAccount()}"></h:commandButton>
+                </h:form>
+            </div>
+        </div>
+    </body>
+    <ui:include src="../includes/Footer.xhtml"/>
+</html>

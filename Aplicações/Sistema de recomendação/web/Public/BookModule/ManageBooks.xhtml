@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+    <f:metadata>
+        <f:viewAction action="#{ManageBookBean.loadAllBooks()}"/>
+    </f:metadata>
+    <h:body>
+
+        <div class="content">
+            <ui:include src="/Public/Components/Headers/Header.xhtml"/>
+            <ui:include src="/Public/Components/Navs/DefaultNav.xhtml"/>
+
+            <div class="page-content">
+                <div class="tituloTopico">Livros armazenados na base de dados</div>
+                <div class="textoExtenso">
+                    Aqui você consegue visualizar e manipular os livros que estão adicionados em nossa 
+                    base de dados<br/><br/>
+                </div>
+                <h:form> 
+                    <h:commandLink class="link" action="#{ManageBookBean.gotoAddBook()}">
+                        <div class="list-view-container">
+
+                            <div class="list-view-image">
+                                <h:graphicImage height="100" width="100" alt="Novo Livro" value="/resources/images/newbook.png"/>
+                            </div>
+                            <div class="list-view-info">
+                                Clique para adicionar novos livros<br/><br/>
+                            </div>
+                        </div>
+                    </h:commandLink>
+                </h:form>
+
+                <h:form>
+                    <h:commandLink  class="link" action="#{ManageBookBean.gotoSearchOnDbPedia()}">
+                        <div class="list-view-container">
+
+                            <div class="list-view-image">
+                                <h:graphicImage height="100" width="150" alt="Novo Livro" value="/resources/images/dbpedia.png"/>
+                            </div>
+                            <div class="list-view-info">
+                                Clique e busque livros na web<br/><br/>
+
+                            </div>
+
+                        </div>
+                    </h:commandLink>
+                </h:form>
+
+                <p:growl autoUpdate="true"/>
+                <div class="formWhiteBackground">
+                    <h:form>
+                        <h:dataTable id="booksTable" class="table table-bordered table-striped" var="book" value="#{ManageBookBean.listOfBooks}">
+                            <h:column>
+                                <f:facet name="header">Nome</f:facet>
+                                    #{book.nameBook}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Autor</f:facet>
+                                    #{book.authorBook}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Lingua</f:facet>
+                                    #{book.languageBook}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">País</f:facet>
+                                    #{book.countryBook}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Gênero</f:facet>
+                                    #{book.genreBook}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Acões</f:facet>
+                                <div style="float:left">
+                                    <div style="float:left">
+                                        <p:commandLink  update="@form" action="#{ManageBookBean.deleteBook()}">
+                                            <h:outputText value="Delete" class="ui-icon ui-icon-trash"/>
+                                            <f:setPropertyActionListener value="#{book}" target="#{ManageBookBean.actualBook}"/>
+                                        </p:commandLink>
+                                    </div>
+                                    <div style="float:left">
+                                        <p:commandLink action="#{ManageBookBean.gotoEditBook()}">
+                                            <h:outputText value="Edit" class="ui-icon ui-icon-pencil"/>
+                                            <f:setPropertyActionListener value="#{book}" target="#{ManageBookBean.actualBook}"/>
+                                        </p:commandLink>
+                                    </div>
+                                    <div style="float:left">
+                                        <p:commandLink action="#{ManageBookBean.gotoBookDetails()}">
+                                            <h:outputText value="Details" class="ui-icon ui-icon-search"/>
+                                            <f:setPropertyActionListener value="#{book}" target="#{ManageBookBean.actualBook}"/>
+                                        </p:commandLink>
+                                    </div>
+                                </div>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+            </div>
+            <ui:include src="/Public/Components/Aside/ColorfulLinks.xhtml"/>
+        </div>
+        <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+    </h:body>
+</html>
+

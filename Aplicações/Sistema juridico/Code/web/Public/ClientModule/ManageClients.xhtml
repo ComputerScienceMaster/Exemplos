@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/core">
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+
+    <h:body>
+
+        <div class="content">
+            <ui:include src="/Public/Components/Headers/Header.xhtml"/>
+
+            <fn:choose>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.primeNav}">
+                    <ui:include src="/Public/Components/Navs/PrimeNav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.defaultNav}">
+                    <ui:include src="/Public/Components/Navs/Nav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.bootstrapNav}">
+                    <ui:include src="/Public/Components/Navs/BootstrapNav.xhtml"/>
+                </fn:when>
+
+            </fn:choose>
+            <nav class="positionSideLinks tree">
+                <p:commandButton class="colorLink" action="#{ManageClientManagedBean.goToAddClients}" value="Adicionar Cliente"/>
+
+            </nav>
+
+            <div class="page-content">
+
+                <div class="tituloTopico">jusHelp - Gerenciar Clientes</div>
+
+                <div class="textoExtenso">
+                    A seguinte lista contém todos os clientes cadastrados em seu sistema <br/><br/>
+
+                    Utilize as "ações" para remover, editar e visualizar o cadastro de seus clientes</div>
+
+
+
+
+                <p:growl autoUpdate="true"/>
+
+                <h:form style="float:left; width: 90%; margin: 3%">
+
+                    <div class="formElements">
+                        <div style="margin-bottom: 2%">Selecione um tipo de pessoa para adicionar</div>
+                        <h:selectOneMenu styleClass="form-control"  value="#{ManageClientManagedBean.typeOfPerson}">
+                            <f:selectItem itemLabel="Pessoa física" itemValue="newPF"  />
+                            <f:selectItem itemLabel="Pessoa Jurídica" itemValue="newPJ"  />
+                            <p:ajax update="@form" />
+                        </h:selectOneMenu>
+                    </div>
+                    
+                    <fn:choose >
+
+                        <fn:when test="#{ManageClientManagedBean.pfSelected}">
+
+                            <div class="formElements">
+
+                                <div class="formElements" style="margin-left: 0; float: left;">
+                                    <div>Digite abaixo o nome do cliente</div>
+                                    <p:inputText class="centralizar" value="#{ManageClientManagedBean.filter}" placeholder="Digite aqui" >
+                                        <p:ajax event="keyup" listener="#{ManageClientManagedBean.filterClientsByName}" update="tableClients"/>
+                                    </p:inputText>
+                                </div>
+
+                                <div class="tablePannel" style="float:left;">
+                                    <p:dataTable id="tableClients" var="cli"  paginator="true" rows="30" value="#{ManageClientManagedBean.listClients}">
+
+                                        <p:column headerText="Nome completo">
+                                            <h:outputText value="#{cli.fullName}" />
+                                        </p:column>
+
+                                        <p:column headerText="E-mail">
+                                            <h:outputText value="#{cli.email}" />
+                                        </p:column>
+
+                                        <p:column headerText="CPF">
+                                            <h:outputText value="#{cli.cpfRegister}" />
+                                        </p:column>
+
+
+                                        <p:column style="width: 23%" headerText="Actions">
+
+                                            <p:commandButton icon="ui-icon-close" action="#{ManageClientManagedBean.removeClient}" update="tableClients" >
+                                                <f:setPropertyActionListener target="#{ManageClientManagedBean.actualClient}" value="#{cli}"/>
+                                                <p:confirm header="Confirmação" message="Tem certeza que deseja remover o cliente?" icon="ui-icon-alert" />
+                                            </p:commandButton>
+
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                            </p:confirmDialog>
+
+                                            <p:commandButton icon="ui-icon-pencil" action="#{ManageClientManagedBean.goToEditClient}">
+                                                <f:setPropertyActionListener target="#{ManageClientManagedBean.actualClient}" value="#{cli}"/>
+                                            </p:commandButton>
+
+                                        </p:column>
+                                    </p:dataTable>
+                                </div>  
+                            </div>
+                        </fn:when>
+
+                        <fn:when test="#{ManageClientManagedBean.pjSelected}">
+                            <div class="formElements">
+
+                                <div class="formElements" style="margin-left: 0; float: left;">
+                                    <div>Digite abaixo o nome do empresa</div>
+                                    <p:inputText class="centralizar" value="#{ManageClientManagedBean.filterCompany}" placeholder="Digite aqui" >
+                                        <p:ajax event="keyup" listener="#{ManageClientManagedBean.filterCompanyByName}" update="tableCompany"/>
+                                    </p:inputText>
+                                </div>
+
+                                <div class="tablePannel" style="float:left;">
+                                    <p:dataTable id="tableCompany" var="cli"  paginator="true" rows="30" value="#{ManageClientManagedBean.listCompany}">
+
+                                        <p:column headerText="CNPJ">
+                                            <h:outputText value="#{cli.cnpj}" />
+                                        </p:column>
+
+                                        <p:column headerText="Nome/Razão social">
+                                            <h:outputText value="#{cli.name}" />
+                                        </p:column>
+
+                                        <p:column headerText="e-mail">
+                                            <h:outputText value="#{cli.email}" />
+                                        </p:column>
+
+
+                                        <p:column style="width: 23%" headerText="Actions">
+
+                                            <p:commandButton icon="ui-icon-close" action="#{ManageClientManagedBean.removeCompany()}" update="tableCompany" >
+                                                <f:setPropertyActionListener target="#{ManageClientManagedBean.actualCompany}" value="#{cli}"/>
+                                                <p:confirm header="Confirmação" message="Tem certeza que deseja remover o cliente?" icon="ui-icon-alert" />
+                                            </p:commandButton>
+
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                            </p:confirmDialog>
+
+                                            <p:commandButton icon="ui-icon-pencil" action="#{ManageClientManagedBean.goToEditCompany()}">
+                                                <f:setPropertyActionListener target="#{ManageClientManagedBean.actualCompany}" value="#{cli}"/>
+                                            </p:commandButton>
+
+                                        </p:column>
+                                    </p:dataTable>
+                                </div>  
+                            </div>
+                        </fn:when>
+                    </fn:choose>
+                </h:form>
+
+            </div>
+
+        </div>
+        <fn:choose>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.defaultFooter}">
+                <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+            </fn:when>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.slimFooter}">
+                <ui:include src="/Public/Components/Footers/SlimFooter.xhtml"/>
+            </fn:when>
+        </fn:choose>
+    </h:body>
+</html>
+

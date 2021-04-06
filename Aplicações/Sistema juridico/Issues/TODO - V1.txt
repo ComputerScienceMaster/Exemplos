@@ -1,0 +1,35 @@
+ok - 1- corrigir o erro de nome completo na substituição das variaveis
+ok - 2- colocar os labels nas telas para identificar cada uma
+ok - 3- colocar as instruções na parte de modelo (variaveis para ser usada)
+ok - 4- verificar a substituição da variavel !#bairro#! - substuindo errado - rg
+   verificar a substituição da variavel !#estado#! - substuindo errado - rg
+ok - 5- ordenar lista de processos por ordem alfabetica e também inserir um filtro por nome;
+ok - 6- colocar na tabela de processos a tag no qual ela está associada - filtrar pela tag
+ok - 7- colocar a pesquisa por nome no modelo e também no trecho e também do cliente
+ok -  8- Retirar a mascara do campo RG no cadastro de clientes 
+ok - 9- O RG (nesse caso) é 2.249.657-3, quando faz o primeiro cadastro do cliente não
+aparece esse problema, porém também não aparece o RG no documento gerado,
+após entrar novamente no cadastro e arrumar aparece o espaço..., por outro lado ao
+colocar os zeros aparece no documento gerado correto, mas com os zeros.
+ok - 10- cadastro ter a opção de CNPJ para quando for cadastrar empresa,
+pensei assim colocar igual do estado civil (pessoa física, pessoa jurídica) pode ser
+diferente sem problema é só uma ideia.
+
+---dentro do cadastro---
+ok - 11- Colocar uma variável dentro do cadastro para colocar o valor da causa e
+automaticamente escrever por extenso, igual a data?
+ok - 12- E uma variável com: data do fato (no cadastro) que informe em numero e
+apareça por extenso.
+ok - 13- Três variáveis com testemunha (pois pego já no cadastro), três linhas,
+testemunha1, testemunha2, testemunha3 pois lá lançarei quando tiver, tudo
+junto: nome, cpf, endereço na sequência.
+-------------------------
+
+14 - Na inserção de trechos a data !#dataAtualExtenso#!, não substitui, somente substitui
+no preenchimento das variáveis do modelo (segundo campo), já a cidade!#cidade#!
+Também não substitui nem depois de utilizar o ultimo campo (prencimento das
+variáveis), está igual o !#nomecompleto#!.
+
+15 - No gerenciar processos, não esta excluindo os processos por exemplo aquele que
+criamos “produto defeituoso” até pergunta mas não exclui.
+

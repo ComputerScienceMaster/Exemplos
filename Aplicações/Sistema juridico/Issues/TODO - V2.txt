@@ -1,0 +1,4 @@
+1- ok - Representante da empresa no pessoa Juridica
+2- ok - colocar um informativo nas causas para dizer qual causa esta
+3- adicionar trecho - caixa de visualização das variaveis não atualiza
+4- trocar o edito do inserir trechos

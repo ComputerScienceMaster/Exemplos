@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:j="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:include src="../includes/HeadIncludesPublic.xhtml"/>
+
+
+    <ui:include src="../includes/NavBar.xhtml"/>
+
+    <body>
+        <p:growl autoUpdate="true"/>
+        <div class="container">
+            <div style="margin-top: 2%">
+                <h:form id="listOftravels">
+                    <ui:repeat value="#{CarManagedBean.listOfTravels}" var="trav">
+                        <div class="travel">
+                            <h:commandLink style="color: #fff;"  action="#{travelManagedBean.gotoDetails()}">
+                                <f:setPropertyActionListener target="#{travelManagedBean.actualTravel}" value="#{trav}"/>
+
+                                <div class="left">
+                                    <h:graphicImage alt="carona" name="images/travel.jpg" class="travelIcon" />
+                                </div>
+                                <div class="right">
+                                    <div><strong>Destino:</strong> #{trav.destination}</div>
+                                    <div><strong>Carro: </strong> #{trav.carPlate.brand} - #{trav.carPlate.model} - #{trav.carPlate.plate}</div>
+                                    <div><strong>Data de Início:</strong>
+                                        <h:outputText value="#{trav.dateInitial}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:outputText> #{trav.timeInitial}
+                                    </div>
+                                    <div><strong>Data do fim: </strong>
+                                        <h:outputText value="#{trav.dateEnd}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:outputText> #{trav.timeEnd}
+                                    </div>
+                                </div>
+                            </h:commandLink>
+                        </div>
+                    </ui:repeat>
+                </h:form>
+            </div>
+
+        </div>
+    </body>
+    <ui:include src="../includes/Footer.xhtml"/>
+</html>

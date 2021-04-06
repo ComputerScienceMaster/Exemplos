@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/core">
+
+    <f:metadata>
+        <f:viewAction action="#{ManageClientManagedBean.clear()}"/>
+    </f:metadata>
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+
+    <h:body>
+
+        <div class="content">
+            <ui:include src="/Public/Components/Headers/Header.xhtml"/>
+
+            <fn:choose>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.primeNav}">
+                    <ui:include src="/Public/Components/Navs/PrimeNav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.defaultNav}">
+                    <ui:include src="/Public/Components/Navs/Nav.xhtml"/>
+                </fn:when>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.nav.bootstrapNav}">
+                    <ui:include src="/Public/Components/Navs/BootstrapNav.xhtml"/>
+                </fn:when>
+
+            </fn:choose>
+
+            <div class="page-content">
+
+                <div class="tituloTopico">jusHelp - Cadastrar Novo Cliente</div>
+
+                <div class="textoExtenso">
+                    Preencha o cadastro a seguir com todas as suas informações. <br/><br/>
+
+                    Estas informações serão utilizadas para preenchimento dos documentos. Os seus clientes poderão ser editados
+                    posteriormente.</div>
+
+                <p:growl autoUpdate="true"/>
+                <div class="formElements">
+
+                    <h:form style="float:left; width: 90%; margin: 3%">
+
+                        <div class="formElements">
+                            <div style="margin-bottom: 2%">Selecione um tipo de pessoa para adicionar</div>
+                            <h:selectOneMenu styleClass="form-control" value="#{ManageClientManagedBean.typeOfPerson}">
+                                <f:selectItem itemLabel="Pessoa física" itemValue="newPF"  />
+                                <f:selectItem itemLabel="Pessoa Jurídica" itemValue="newPJ"  />
+                                <p:ajax update="@form" />
+                            </h:selectOneMenu>
+                        </div>
+                        <fn:choose >
+
+                            <fn:when test="#{ManageClientManagedBean.pfSelected}">
+                                <h:panelGrid  columns="1" style="float:left; width: 100%; padding: 2%;">
+
+                                    <p:outputLabel value="CPF"/>
+                                    <p:inputMask required="true" requiredMessage="É necessário que você digite um CPF para seu cliente" mask="999.999.999-99" placeholder="ex: 8.645.245.684-10" class="centralizar"  value="#{ManageClientManagedBean.actualClient.cpfRegister}" >
+                                    </p:inputMask> 
+
+                                    <p:outputLabel value="Nome completo"/>
+                                    <p:inputText placeholder="Digite o nome completo do cliente" class="centralizar"  value="#{ManageClientManagedBean.actualClient.fullName}" /> 
+
+                                    <p:outputLabel value="Nacionalidade"/>
+                                    <p:inputText placeholder="Digite a nacionalidade cliente" class="centralizar"  value="#{ManageClientManagedBean.actualClient.nationality}" /> 
+
+                                    <p:outputLabel value="Data de Nascimento "/>
+                                    <p:calendar value="#{ManageClientManagedBean.actualClient.birthDate}" showOn="button"/>
+
+                                    <p:outputLabel value="Estado civil "/>
+                                    <h:selectOneMenu id="console" class="form-control" style="width: 100%;" value="#{ManageClientManagedBean.actualClient.maritalStatus}">
+                                        <f:selectItem itemLabel="Casado" itemValue="Casado" />
+                                        <f:selectItem itemLabel="Solteiro" itemValue="Solteiro" />
+                                        <f:selectItem itemLabel="Viúvo" itemValue="Viúvo" />
+                                        <f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
+                                    </h:selectOneMenu>
+
+                                    <p:outputLabel value="Ocupação"/>
+                                    <p:inputText placeholder="Digite a ocupação cliente" class="centralizar"  value="#{ManageClientManagedBean.actualClient.job}" /> 
+
+                                    <p:outputLabel value="Carteira de Trabalho"/>
+                                    <p:inputText placeholder="Digite a CTPS cliente" class="centralizar"  value="#{ManageClientManagedBean.actualClient.ctps}" /> 
+
+                                    <p:outputLabel value="Registro Geral do cliente (RG)"/>
+                                    <p:inputText placeholder="ex: 8.611.145-2" class="centralizar"  value="#{ManageClientManagedBean.actualClient.generalRegister}"/> 
+
+                                    <p:outputLabel value="Estado de emissão do RG"/>
+                                    <h:selectOneMenu class="form-control" style="width: 100%;" value="#{ManageClientManagedBean.actualClient.rgState}">
+                                        <f:selectItem itemLabel="Acre" itemValue="AC" />
+                                        <f:selectItem itemLabel="Alagoas" itemValue="AL" />
+                                        <f:selectItem itemLabel="Amapá" itemValue="AP" />
+                                        <f:selectItem itemLabel="Bahia" itemValue="AM" />
+                                        <f:selectItem itemLabel="Ceara" itemValue="CE" />
+                                        <f:selectItem itemLabel="Distrito Federal" itemValue="DF" />
+                                        <f:selectItem itemLabel="Espirito Santo" itemValue="ES" />
+                                        <f:selectItem itemLabel="Goias" itemValue="GO" />
+                                        <f:selectItem itemLabel="Maranhão" itemValue="MA" />
+                                        <f:selectItem itemLabel="Mato Grosso" itemValue="MT" />
+                                        <f:selectItem itemLabel="Mato Grosso do Sul" itemValue="MS" />
+                                        <f:selectItem itemLabel="Minas Gerais" itemValue="MG" />
+                                        <f:selectItem itemLabel="Pará" itemValue="PA" />
+                                        <f:selectItem itemLabel="Paraiba" itemValue="PB" />
+                                        <f:selectItem itemLabel="Paraná" itemValue="PR" />
+                                        <f:selectItem itemLabel="Pernambuco" itemValue="PE" />
+                                        <f:selectItem itemLabel="Piauí" itemValue="PI" />
+                                        <f:selectItem itemLabel="Rio Grande do Norte" itemValue="RN" />
+                                        <f:selectItem itemLabel="Rio Grande do Sul" itemValue="RS" />
+                                        <f:selectItem itemLabel="Rondônia" itemValue="RO" />
+                                        <f:selectItem itemLabel="Roraima" itemValue="RR" />
+                                        <f:selectItem itemLabel="Santa Catarina" itemValue="SC" />
+                                        <f:selectItem itemLabel="São Paulo" itemValue="SP" />
+                                        <f:selectItem itemLabel="Sergipe" itemValue="SE" />
+                                        <f:selectItem itemLabel="Tocantins" itemValue="TO" />
+                                    </h:selectOneMenu>
+
+                                    <p:outputLabel value="Emissor do RG"/>
+                                    <h:selectOneMenu class="form-control" style="width: 100%;" value="#{ManageClientManagedBean.actualClient.rgEmiter}">
+                                        <f:selectItem itemLabel="Secretaria de Segurança Pública" itemValue="SSP" />
+                                        <f:selectItem itemLabel="Polícia Militar" itemValue="PM" />
+                                        <f:selectItem itemLabel="Polícia Civil" itemValue="PC" />
+                                        <f:selectItem itemLabel="Carteira Nacional de Habilitação" itemValue="CNT" />
+                                        <f:selectItem itemLabel="Diretoria de Identificação Civil" itemValue="DIC" />
+                                        <f:selectItem itemLabel="Carteira de Trabalho e Previdência Social" itemValue="CTPS" />
+                                        <f:selectItem itemLabel="Fundo de Garantia por tempo de Serviço" itemValue="FGTS" />
+                                        <f:selectItem itemLabel="Instituto Félix Pacheco" itemValue="IFP" />
+                                        <f:selectItem itemLabel="Instituto Pereira Faustino" itemValue="IPF" />
+                                        <f:selectItem itemLabel="Instituto Médico Legal" itemValue="IML" />
+                                        <f:selectItem itemLabel="Ministério do Trabalho e Emprego" itemValue="MTE" />
+                                        <f:selectItem itemLabel="Ministério da Marinha" itemValue="MMA" />
+                                        <f:selectItem itemLabel="Ministério da Aeronautica" itemValue="MAE" />
+                                        <f:selectItem itemLabel="Ministério do Exército" itemValue="MEX" />
+                                        <f:selectItem itemLabel="Polícia Federal" itemValue="PF" />
+                                        <f:selectItem itemLabel="Polícia Militar" itemValue="POM" />
+                                        <f:selectItem itemLabel="Carteira de Estrangeiro" itemValue="SES" />
+                                        <f:selectItem itemLabel="Secretaria da Justiça e Segurança" itemValue="SJS" />
+                                        <f:selectItem itemLabel="Secretaria da Justiça do Trabalho e Segurança" itemValue="SJTS" />
+                                        <f:selectItem itemLabel="Outros" itemValue="ZZZ" />
+                                    </h:selectOneMenu>
+
+                                    <p:outputLabel value="Comarca"/>
+                                    <p:inputText placeholder="Digite comarca" class="centralizar"  value="#{ManageClientManagedBean.actualClient.county}" /> 
+
+                                    <p:outputLabel value="CEP"/>
+                                    <p:inputMask mask="99999-999" placeholder="ex: 86341-000" class="centralizar"  value="#{ManageClientManagedBean.actualClient.cep}"  >
+                                        <f:ajax event="blur" render="state city address" listener="#{ManageClientManagedBean.findCep}"/>    
+                                    </p:inputMask>
+
+                                    <p:outputLabel value="Estado"/>
+                                    <p:inputText id="state" placeholder="ex: Paraná" class="centralizar"  value="#{ManageClientManagedBean.actualClient.state}" /> 
+
+                                    <p:outputLabel value="Cidade"/>
+                                    <p:inputText id="city" placeholder="ex: Londrina" class="centralizar"  value="#{ManageClientManagedBean.actualClient.city}" /> 
+
+                                    <p:outputLabel value="Bairro"/>
+                                    <p:inputText placeholder="ex: Bom jesus" class="centralizar"  value="#{ManageClientManagedBean.actualClient.district}" /> 
+
+                                    <p:outputLabel value="Endereço #1"/>
+                                    <p:inputText id="address" placeholder="ex: Rua Carlos da Silva nº 167" class="centralizar"  value="#{ManageClientManagedBean.actualClient.address1}" /> 
+
+                                    <p:outputLabel value="Endereço #2"/>
+                                    <p:inputText placeholder="ex: Rua Carlos da Silva nº 167" class="centralizar"  value="#{ManageClientManagedBean.actualClient.address2}" /> 
+
+                                    <p:outputLabel value="Título de eleitor"/>
+                                    <p:inputMask mask="999.999.999.99" placeholder="ex: 999.999.999.999.99" class="centralizar"  value="#{ManageClientManagedBean.actualClient.votersTitle}" ></p:inputMask> 
+
+                                    <p:outputLabel value="Telefone"/>
+                                    <p:inputMask mask="(99) 99999-9999" placeholder="ex: (43) 99145-5878" class="centralizar"  value="#{ManageClientManagedBean.actualClient.phone}" ></p:inputMask> 
+
+                                    <p:outputLabel value="E-mail "/>
+                                    <p:inputText class="centralizar" placeholder="Digite E-mail para contato com o cliente" required="true" size="40" requiredMessage="Por favor, Digite seu e-mail"
+                                                 validatorMessage="Formato de e-mail Invalido" value="#{ManageClientManagedBean.actualClient.email}" >
+                                        <f:validateRegex
+                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                    </p:inputText> 
+
+                                    <p:commandButton style="margin-left: 35%; width: 30%; margin-top: 3%" class="centralizar"  value="Adicionar" action="#{ManageClientManagedBean.finishAddClient()}"/> 
+                                </h:panelGrid>
+                            </fn:when>
+
+                            <fn:when test="#{ManageClientManagedBean.pjSelected}">
+                                <h:panelGrid  columns="1" style="float:left; width: 100%; padding: 2%;">
+
+                                    <p:outputLabel value="CNPJ"/>
+                                    <p:inputMask required="true" requiredMessage="É necessário que você digite um CNPJ para seu cliente" mask="99.999.999/9999-99" placeholder="ex: 75.909.012/0001-35" class="centralizar"  value="#{ManageClientManagedBean.actualCompany.cnpj}" >
+                                    </p:inputMask> 
+
+                                    <p:outputLabel value="Nome/Razão social"/>
+                                    <p:inputText placeholder="Digite ou razão social do cliente" class="centralizar"  value="#{ManageClientManagedBean.actualCompany.name}" /> 
+
+                                    <p:outputLabel value="País de origem "/>
+                                    <p:inputText placeholder="Digite a nacionalidade cliente" class="centralizar"  value="#{ManageClientManagedBean.actualCompany.country}" /> 
+
+
+                                    <p:outputLabel value="CEP"/>
+                                    <p:inputMask mask="99999-999" placeholder="ex: 86341-000" class="centralizar"  value="#{ManageClientManagedBean.actualCompany.cep}"  >
+                                        <f:ajax event="blur" render="stateCompany cityCompany addressCompany" listener="#{ManageClientManagedBean.findCepCompany()}"/>    
+                                    </p:inputMask>
+
+                                    <p:outputLabel value="Estado"/>
+                                    <p:inputText id="stateCompany" placeholder="ex: Paraná" class="centralizar"  value="#{ManageClientManagedBean.actualCompany.state}" /> 
+
+                                    <p:outputLabel value="Cidade"/>
+                                    <p:inputText id="cityCompany" placeholder="ex: Londrina" class="centralizar"  value="#{ManageClientManagedBean.actualCompany.city}" /> 
+
+                                    <p:outputLabel value="Endereço #1"/>
+                                    <p:inputText id="addressCompany" placeholder="ex: Rua Carlos da Silva nº 167" class="centralizar"  value="#{ManageClientManagedBean.actualCompany.address1}" /> 
+
+                                    <p:outputLabel value="Endereço #2"/>
+                                    <p:inputText placeholder="ex: Rua Carlos da Silva nº 167" class="centralizar"  value="#{ManageClientManagedBean.actualCompany.address2}" /> 
+
+                                    <p:outputLabel value="Telefone"/>
+                                    <p:inputMask mask="(99) 99999-9999" placeholder="ex: (43) 99145-5878" class="centralizar"  value="#{ManageClientManagedBean.actualCompany.phone}" ></p:inputMask> 
+
+                                    <p:outputLabel value="E-mail "/>
+                                    <p:inputText class="centralizar" placeholder="Digite E-mail para contato com o cliente" required="true" size="40" requiredMessage="Por favor, Digite seu e-mail"
+                                                 validatorMessage="Formato de e-mail Invalido" value="#{ManageClientManagedBean.actualCompany.email}" >
+                                        <f:validateRegex
+                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                    </p:inputText> 
+
+                                    <p:commandButton style="margin-left: 35%; width: 30%; margin-top: 3%" class="centralizar"  value="Adicionar" action="#{ManageClientManagedBean.finishAddCompany()}"/> 
+                                </h:panelGrid>
+                            </fn:when>
+                        </fn:choose >
+                    </h:form>
+
+                </div>
+
+            </div>
+            <fn:choose>
+                <fn:when test="#{ManageLoginManagedBean.componentsContainer.asides.colorfulLinks}">
+                    <ui:include src="/Public/Components/Aside/ColorfulLinks.xhtml"/>
+                </fn:when>
+            </fn:choose>
+        </div>
+        <fn:choose>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.defaultFooter}">
+                <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+            </fn:when>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.slimFooter}">
+                <ui:include src="/Public/Components/Footers/SlimFooter.xhtml"/>
+            </fn:when>
+        </fn:choose>
+    </h:body>
+</html>
+

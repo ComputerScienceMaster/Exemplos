@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+
+
+    <f:metadata>
+        <f:viewAction action="#{ManageDocumentsManagedBean.loadTree()}"/>
+    </f:metadata>
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+  <h:body>
+
+        <div class="content">
+            <ui:include src="/Public/Components/Headers/HeaderSlim.xhtml"/>
+
+            <ui:include src="/Public/Components/Navs/BootstrapNavHorizontal.xhtml"/>
+
+              <h:form id="formEditor">
+
+                <div class="page-content" style=" float:left; padding-top: 0">
+
+
+                    <div class="formElements">
+
+                        <h:panelGrid  columns="1" style="float:left; width: 100%; ">
+
+                            <pe:ckEditor height="1850" width="100%" value="#{ManageDocumentsManagedBean.corpusToSave}" >  </pe:ckEditor> 
+
+                            <p:panelGrid columns="2" style=" width: 100%; margin-top: 3%; margin-bottom: 3%; padding: 2%;">
+
+                                <h:outputText  value="Nome do arquivo:" />
+                                <p:inputText class="centralizar" value="#{ManageDocumentsManagedBean.actualDocument.title}" />
+
+                                <h:outputText value="Resumo:" />
+                                <p:inputText class="centralizar" value="#{ManageDocumentsManagedBean.actualDocument.summary}" />
+
+                                <h:outputText value="Classificação:" />
+                                <p:selectOneMenu effect="fade"  value="#{ManageDocumentsManagedBean.actualDocument.tagidTag}" style="width:100%">
+                                    <f:selectItems value="#{ManageDocumentsManagedBean.listTags}"/>
+                                    <f:converter converterId="ConverterTags"/>
+                                </p:selectOneMenu>
+
+                            </p:panelGrid>
+
+                            <p:commandButton icon="ui-icon-disk" class="centralizar" value="Salvar Documento" action="#{ManageDocumentsManagedBean.finishAdicionarDocument()}"/>
+                        </h:panelGrid>
+                    </div>
+
+
+                </div>
+
+                <div class="positionSideLinksEditMode">
+
+                    <div class="formElements" >
+                        <div class="tituloInfo centralizar" style="color:#173e43">Inserção de Modelos</div>
+
+                        <div class="text-info"> Filtre os modelos e trechos clicando em uma classificação abaixo:</div> <br/>
+                        <p:tree style="width:100%; float:right" dynamic="true" cache="false" value="#{ManageDocumentsManagedBean.root}" var="node">
+                            <p:treeNode>
+                                <p:commandLink update=":formEditor:comboSelectOneModel" action="#{ManageDocumentsManagedBean.filterDocumentsByTag()}" value="#{node}" >
+                                    <f:setPropertyActionListener target="#{ManageDocumentsManagedBean.selectedTag}" value="#{node}"/>
+                                </p:commandLink>
+                            </p:treeNode>
+                        </p:tree>
+
+                        <div class="boardManipulateTag">
+
+
+                            <div class="textoExtenso">Para inserir um modelo no documento abaixo marque o local da inserção com a tag !#inserirModelo#!. <br/>
+                                Após marca-lo, selecione abaixo o modelo que deseja inserir e clique em "Carregar dados do Modelo".</div>
+
+                            <p:selectOneMenu id="comboSelectOneModel" style="float:left; width: 100%;" value="#{ManageDocumentsManagedBean.actualDocument.documentModelidDocumentModel}" >
+                                <f:selectItems value="#{ManageDocumentsManagedBean.listModels}"/>
+                                <f:converter converterId="ConverterDocumentModel"/>
+                            </p:selectOneMenu>
+                            <div style="float: left">
+                                <p:panelGrid columns="2" style=" width: 100%; margin-top: 3%; margin-bottom: 3%; padding: 2%;">
+
+                                    <h:outputText value="Nome do modelo:" />
+                                    <h:outputText value=" #{ManageDocumentsManagedBean.actualDocument.documentModelidDocumentModel.title}" />
+
+                                    <h:outputText value="Resumo:" />
+                                    <h:outputText value=" #{ManageDocumentsManagedBean.actualDocument.documentModelidDocumentModel.summary}" />
+
+                                    <h:outputText value="Classificação:" />
+                                    <h:outputText value=" #{ManageDocumentsManagedBean.actualDocument.documentModelidDocumentModel.tagidTag.title}" />
+
+                                    <h:outputText value="Visualizar:" />
+                                    <p:commandButton icon="ui-icon-search" onclick="PF('viewModel').show();"  value="pré-visualizar modelo" />
+
+
+                                </p:panelGrid>
+                                <p:dialog header="Pré-visualização" widgetVar="viewModel" modal="true" draggable="true" width="1600" height="700" >
+                                    <pe:ckEditor  height="550" width="100%" readonly="true" value="#{ManageDocumentsManagedBean.actualDocument.documentModelidDocumentModel.corpus}"/>
+                                </p:dialog>  
+                            </div>
+                            <div class="centralizar" style="float: left; margin-top: 20px">
+                                <p:commandButton icon="ui-icon-script" update="@form" style="margin-top: 10px;" value="Carregar dados do modelo"  actionListener="#{ManageDocumentsManagedBean.numberOfDocumentPartsInModel()}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="formElements">
+                        <div class="tituloInfo" style="margin-bottom: 5%" >Inserção de trechos</div>
+
+                        <div class="smallMargin">Selecione o trecho que deve ser substituido</div>
+
+                        <p:selectOneMenu style="float:left; width: 100%;" value="#{ManageDocumentsManagedBean.documentPartToReplace}">
+                            <f:selectItems value="#{ManageDocumentsManagedBean.listOfPartsToReplace}"/>
+                            <f:converter converterId="ConverterPartsToReplace"/>
+                        </p:selectOneMenu>
+
+                        <div class="smallMargin">Selecione a classificação</div> 
+
+                        <p:selectOneMenu style="float:left; width: 100%;" value="#{ManageDocumentsManagedBean.selectedTagToSearchParts}">
+                            <f:selectItems value="#{ManageDocumentsManagedBean.listTags}"/>
+                            <f:converter converterId="ConverterTags"/>
+                            <p:ajax update="trechosByTag" listener="#{ManageDocumentsManagedBean.filterDocumentPartsByTag}"/>
+                        </p:selectOneMenu>
+
+
+                        <div class="smallMargin">Selecione o trecho </div>
+
+
+                        <p:selectOneMenu id="trechosByTag" style="float:left; width: 100%;" value="#{ManageDocumentsManagedBean.documentPartSelected}">
+                            <f:selectItems value="#{ManageDocumentsManagedBean.listOfPartsByTag}"/>
+                            <f:converter converterId="ConverterDocumentParts"/>
+                            <p:ajax update="@form" />
+                        </p:selectOneMenu>
+
+
+                        <div class="smallMargin"> Digite o nome do cliente para buscar </div>
+
+                        <p:inputText value="#{ManageDocumentsManagedBean.filterClients}" class="centralizar" placeholder="Digite aqui" >
+                            <p:ajax event="keyup" listener="#{ManageDocumentsManagedBean.filterClientsByName}" update="listOfClientsToSelect"/>
+                        </p:inputText>
+
+                        <p:dataTable id="listOfClientsToSelect" style="margin-top: 20px" var="cli" value="#{ManageDocumentsManagedBean.listOfClients}" selection="#{ManageDocumentsManagedBean.clientSelectedToReplace}" rowKey="#{cli.cpfRegister}">
+                            <f:facet name="header">
+                                Selecione um cliente
+                            </f:facet>
+                            <p:column selectionMode="single" style="width:32px;text-align:center"/>
+                            <p:column headerText="CPF">
+                                <h:outputText value="#{cli.cpfRegister}" />
+                            </p:column>
+                            <p:column headerText="Nome completo">
+                                <h:outputText value="#{cli.fullName}" />
+                            </p:column>
+                            <p:column headerText="E-mail">
+                                <h:outputText value="#{cli.email}" />
+                            </p:column>
+                        </p:dataTable>
+
+                        <div style="width: 100%; text-align: center;">
+                            <p:commandButton icon="ui-icon-transferthick-e-w" class="smallMargin" update="@form" action="#{ManageDocumentsManagedBean.replaceOnCorpus}" value="Inserir Trecho no texto" />
+
+                            <p:dialog header="Pré-visualização do trecho" widgetVar="viewPartToInsert" modal="true" >
+                                <h:outputText class="textoExtenso" escape="false" value="#{ManageDocumentsManagedBean.documentPartSelected.corpus}"/>
+                            </p:dialog>  
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="formElements">
+
+                        <div class="tituloInfo" style="margin-bottom: 5%" >Preencha as variáveis da Causa</div>
+
+                        <div class="textoExtenso">Esta seção é destinada a procuta do tipo de processo que você deseja realizar a seleção. 
+                            Na caixa abaixo você deverá selecionar qual tipo de processo você estará produzindo</div>
+
+
+                        <p:inputText  value="#{ManageDocumentsManagedBean.filterCauses}" class="centralizar" placeholder="Digite o processo para buscar">
+                            <p:ajax event="keyup" listener="#{ManageDocumentsManagedBean.filterCausesByName()}" update="listOfCauses"/>
+                        </p:inputText>
+
+                        <div class="formBox">
+
+
+                            <p:dataTable id="listOfCauses" var="car" paginator="true" rows="10" value="#{ManageDocumentsManagedBean.listOfCausesToReplace}" selection="#{ManageDocumentsManagedBean.causeToReplace}" rowKey="#{car.idCause}">
+                                <p:column selectionMode="single" style="width:32px;text-align:center"/>
+                                <p:column style="width:68px;text-align: center">
+                                    <p:commandButton update=":formEditor:dialogVariableList" oncomplete="PF('varDialog').show()" icon="ui-icon-search" title="View">
+                                        <f:setPropertyActionListener value="#{car}" target="#{ManageDocumentsManagedBean.causeToReplace}" />
+                                    </p:commandButton>
+                                </p:column>
+                                <p:column headerText="Nome da causa">
+                                    <h:outputText value="#{car.name}" />
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton style="margin: 1%" action="#{ManageCausesManagedBean.goToManageVariable()}" value="Inserir novas variáveis" >
+                                        <f:setPropertyActionListener target="#{ManageCausesManagedBean.actualCause}" value="#{car}"/>
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+
+
+                            <p:dialog id="dialogVariableList" header="Variáveis inseridas" widgetVar="varDialog" modal="true">
+                                <div class="formElements">
+                                    <p:dataTable style="width: 550px" var="var" value="#{ManageDocumentsManagedBean.causeToReplace.causevariableList}">
+                                        <p:column headerText="Nome da variável">
+                                            #{var.variableName}
+                                        </p:column>
+                                        <p:column headerText="Conteúdo da variável">
+                                            #{var.variableContent}
+                                        </p:column>
+                                    </p:dataTable>
+                                </div>
+                            </p:dialog>
+                            <div class="centralizar smallMargin">
+                                <p:commandButton icon="ui-icon-transfer-e-w"  update="listOfVariables" value="Carregar variáveis" action="#{ManageDocumentsManagedBean.loadVariables}"/>
+                            </div>
+                        </div>
+
+
+
+                        <p:dataTable id="listOfVariables" style="margin-top: 5%; float: left" var="car" value="#{ManageDocumentsManagedBean.listOfVariablesToReplace}" >
+                            <p:column headerText="Identificador">
+                                <h:outputText value="#{car.variableName}" />
+                            </p:column>
+                            <p:column headerText="Conteúdo da variável">
+                                <h:inputText value="#{car.variableContent}" />
+                            </p:column>
+                        </p:dataTable>
+                        <div class="centralizar" style="float: left; margin-top: 20px">
+                            <p:commandButton icon="ui-icon-transfer-e-w"  update="@form" value="Substituir no documento" action="#{ManageDocumentsManagedBean.replaceOnUserVariablesOnCorpus}">
+                                <p:confirm header="Confirmação" message="Tem certeza que deseja substituir estas variáveis no documento?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                        </div>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+
+                    </div>
+
+                </div>
+            </h:form>
+
+        </div>
+
+        <fn:choose>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.defaultFooter}">
+                <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+            </fn:when>
+            <fn:when test="#{ManageLoginManagedBean.componentsContainer.footers.slimFooter}">
+                <ui:include src="/Public/Components/Footers/SlimFooter.xhtml"/>
+            </fn:when>
+        </fn:choose>
+    </h:body>
+    
+</html>
+

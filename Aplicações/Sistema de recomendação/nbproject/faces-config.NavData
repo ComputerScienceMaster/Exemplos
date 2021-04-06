@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="Admin/MenuLateral.xhtml" x="631" y="258" zoom="true"/>
+        <Node id="Admin/HeadIncludesAdmin.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="Admin/Welcome.xhtml" x="401" y="91" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>
