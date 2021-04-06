@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<% include ../partials/head.ejs %>
+<% include ../partials/header.ejs %>
+<body>
+    <div class="col-md-9" style="margin:13%;">
+        <table class="table table-striped">
+            <tr>
+                <th>Nome do Usuario</th>
+                <th>Login</th>
+                <th>E-mail</th>
+                <th>Opções</th>
+            </tr>
+        <% for(var i=0; i<user.length; i++) {%>
+            <tr>   
+            <td><%= user[i].nameUserAccount %></td>
+            <td><%= user[i].loginUserAccount %></td>
+            <td><%= user[i].emailUserAccount %></td>
+            <td>
+                <form method="post" action="/delete"> 
+                    <input type="submit" class="btn btn-danger" value="excluir"/> 
+                    <input type="hidden" name="usertodelete" value="<%= user[i].id %>">
+                </form>
+                <form method="post" action="/edit"> 
+                    <input type="submit" class="btn btn-warning" value="alterar"/>
+                    <input type="hidden" name="usertoedit" value="<%= user[i].id %>"/>
+                </form>
+                
+            </td>
+            </tr>
+        <% } %>
+        </table>
+    </div>
+</body>
+<% include ../partials/footer.ejs %>

@@ -1,0 +1,7 @@
+models\Person.class
+config\JpaConfiguration.class
+Controller\PersonController.class
+DAO\PersonDAO.class
+models\Person_.class
+config\AppWebConfiguration.class
+config\ServletSpringMVC.class

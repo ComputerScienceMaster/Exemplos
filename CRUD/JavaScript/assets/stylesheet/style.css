@@ -1,0 +1,114 @@
+/* --------------------------- Font --------------------------- */
+
+@font-face {
+    font-family: "Ubuntu";
+    src: url("../font/Ubuntu-M.ttf") format("truetype");
+}
+
+/* --------------------------- Header --------------------------- */
+
+#nav {
+    width: 100%;
+    height: 15vh;
+    background-color: blueviolet;
+    color: white;
+    font-size: 2em;
+    font-family: Ubuntu;
+    text-align: center;
+    line-height: 14vh;
+}
+
+/* --------------------------- Form --------------------------- */
+
+#input-data {
+    width: 90vw;
+    font-family: Ubuntu;
+    margin: 0 auto;
+    margin-top: 5vh;
+    display: flex;
+}
+
+.input-text {
+    flex: 1;
+    min-width: 210px;
+    margin: 5px;
+    height: 35px;
+    padding-left: 5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #262626;
+    transition: 0.25s;
+    outline: none;
+}
+
+.input-text:focus{
+    border-color: blueviolet;
+}
+
+.input-btn {
+    flex: 1;
+    margin: 5px;
+    height: 39px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #262626;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.input-btn:hover {
+    background-color: #383838;
+    border-color: #383838;
+    color: white;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+/* --------------------------- Table --------------------------- */
+
+#myTable {
+    font-family: Ubuntu;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 5vh;
+    border-collapse: collapse;
+}
+
+#myTable th {
+    background-color: blueviolet;
+    padding: 10px;
+    color: white;
+    font-weight: 100;
+}
+
+#myTable td, th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#myTable td{
+    padding: 5px;
+}
+
+#myTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#myTable tr:hover {
+    background-color: #ddd;
+}
+
+.remove-btn{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-width: 0px;
+    background-color: transparent;
+    cursor: pointer;
+}

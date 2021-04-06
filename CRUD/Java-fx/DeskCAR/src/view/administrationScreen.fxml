@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="387.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdministrationScreenController">
+   <children>
+      <ImageView fx:id="background" fitHeight="387.0" fitWidth="688.0" pickOnBounds="true">
+         <image>
+            <Image url="@../background.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="mainPanel" layoutX="284.0" layoutY="14.0" prefHeight="359.0" prefWidth="390.0" style="-fx-background-color: #303030;">
+         <children>
+            <JFXButton fx:id="addCarButton" layoutX="38.0" layoutY="21.0" onAction="#addCarButtonAction" prefHeight="56.0" prefWidth="314.0" style="-fx-background-color: #e6e6e6;" text="Adicionar Veículo" />
+            <JFXButton fx:id="removeCarButton" layoutX="38.0" layoutY="86.0" onAction="#removeCarButtonAction" prefHeight="56.0" prefWidth="314.0" style="-fx-background-color: #e6e6e6;" text="Remover Veículo" />
+            <JFXButton fx:id="acceptSaleButton" layoutX="38.0" layoutY="152.0" onAction="#acceptSaleButtonAction" prefHeight="56.0" prefWidth="314.0" style="-fx-background-color: #e6e6e6;" text="Aprovar Compra" />
+            <JFXButton fx:id="salesHistoryButton" layoutX="38.0" layoutY="218.0" onAction="#salesHistoryButtonAction" prefHeight="56.0" prefWidth="314.0" style="-fx-background-color: #e6e6e6;" text="Histórico de Vendas" />
+            <JFXButton fx:id="exitButton" layoutX="38.0" layoutY="285.0" onAction="#exitButtonAction" prefHeight="56.0" prefWidth="314.0" style="-fx-background-color: #e6e6e6;" text="Voltar" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="addCarPanel" layoutX="284.0" layoutY="14.0" prefHeight="359.0" prefWidth="390.0" style="-fx-background-color: #303030;" visible="false">
+         <children>
+            <JFXComboBox fx:id="addCarModel" focusColor="#78e9fa" labelFloat="true" layoutX="46.0" layoutY="28.0" prefHeight="25.0" prefWidth="299.0" promptText="Modelo" style="-fx-prompt-text-fill: #e6e6e6; -fx-text-fill: #e6e6e6;" unFocusColor="#e6e6e6" />
+            <JFXComboBox fx:id="addCarAttributes" focusColor="#78e9fa" labelFloat="true" layoutX="46.0" layoutY="68.0" prefHeight="25.0" prefWidth="299.0" promptText="Atributos" style="-fx-prompt-text-fill: #e6e6e6; -fx-text-inner-color: #e6e6e6;" unFocusColor="#e6e6e6" />
+            <JFXComboBox fx:id="addCarColor" focusColor="#78e9fa" labelFloat="true" layoutX="46.0" layoutY="108.0" prefHeight="25.0" prefWidth="299.0" promptText="Cor" style="-fx-prompt-text-fill: #e6e6e6; -fx-text-inner-color: #e6e6e6;" unFocusColor="#e6e6e6" />
+            <JFXComboBox fx:id="addCarEngine" focusColor="#78e9fa" labelFloat="true" layoutX="46.0" layoutY="148.0" prefHeight="25.0" prefWidth="299.0" promptText="Motor" style="-fx-prompt-text-fill: #e6e6e6; -fx-text-inner-color: #e6e6e6;" unFocusColor="#e6e6e6" />
+            <JFXComboBox fx:id="addCarFuel" focusColor="#78e9fa" labelFloat="true" layoutX="46.0" layoutY="188.0" prefHeight="25.0" prefWidth="299.0" promptText="Combustível" style="-fx-prompt-text-fill: #e6e6e6; -fx-text-inner-color: #e6e6e6;" unFocusColor="#e6e6e6" />
+            <JFXTextField fx:id="addCarTire" focusColor="#78e9fa" labelFloat="true" layoutX="46.0" layoutY="228.0" onKeyTyped="#addCarTireAction" prefHeight="25.0" prefWidth="299.0" promptText="Tamanho da Roda" style="-fx-prompt-text-fill: #e6e6e6; -fx-text-inner-color: #e6e6e6;" unFocusColor="#e6e6e6" />
+            <JFXTextField fx:id="addCarValue" focusColor="#78e9fa" labelFloat="true" layoutX="46.0" layoutY="268.0" onKeyTyped="#addCarValueAction" prefHeight="25.0" prefWidth="299.0" promptText="Valor" style="-fx-prompt-text-fill: #e6e6e6; -fx-text-inner-color: #e6e6e6;" unFocusColor="#e6e6e6" />
+            <JFXButton fx:id="addCarAddButton" layoutX="46.0" layoutY="306.0" onAction="#addCarAddButtonAction" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #e6e6e6;" text="Adicionar" />
+            <JFXButton fx:id="addCarCancel" layoutX="217.0" layoutY="306.0" onAction="#addCarCancelAction" prefHeight="39.0" prefWidth="128.0" style="-fx-background-color: #e6e6e6;" text="Cancelar" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="60.0" layoutY="170.0" text="DeskCAR" textFill="#e6e6e6">
+         <font>
+            <Font name="Poor Richard" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

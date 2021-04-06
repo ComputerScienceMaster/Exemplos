@@ -1,0 +1,18 @@
+<% include ../partials/head.ejs %>
+<% include ../partials/header.ejs %>
+
+<body class="text-center">
+    <form class="form-signup col-md-3" method="POST">
+        <h1 class="h3 mb-3 font-weight-normal">Cadastre-se</h1>
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Login do usuário" name="loginUser" />
+            <input class="form-control" type="text" placeholder="Senha" name="passwordUser" />
+            <input class="form-control" type="text" placeholder="Nome completo" name="nameUser" />
+            <input class="form-control" type="text" placeholder="E-mail" name="emailUser" />
+        </div>
+        <div class="form-group">
+            <input class="form-control btn btn-primary" type="submit" value="Salvar" />
+        </div>
+    </form>
+</body>
+<% include ../partials/footer.ejs %>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="DeskCARPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>model.Comprador</class>
+    <class>model.Motor</class>
+    <class>model.Combustivel</class>
+    <class>model.Carro</class>
+    <class>model.Compra</class>
+    <class>model.Modelo</class>
+    <class>model.Cor</class>
+    <class>model.Atributo</class>
+    <class>model.Attribute</class>
+    <class>model.Buyer</class>
+    <class>model.Car</class>
+    <class>model.Purchase</class>
+    <class>model.Model</class>
+    <class>model.Color</class>
+    <class>model.Fuel</class>
+    <class>model.CarEngine</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/deskcar"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="2601"/>
+    </properties>
+  </persistence-unit>
+</persistence>

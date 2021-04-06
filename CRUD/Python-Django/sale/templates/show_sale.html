@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="row">
+	<div class="col-lg-12">
+		<h2>{{product.name}}</h2>
+		<div>
+			<div>Expiration date: {{product.expiration}}</div>
+			<div class="alert alert-success">Price: R${{product.price}}"</div>
+		</div>
+	</div>
+</div>
+{% endblock %}	
