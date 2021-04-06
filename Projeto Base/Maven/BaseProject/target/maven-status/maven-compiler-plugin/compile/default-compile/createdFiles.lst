@@ -1,0 +1,15 @@
+Model\Administrator_.class
+Model\UserAccount_.class
+Converters\ConverterSample.class
+Model\Administrator.class
+Model\UserAccount.class
+View\AutorizationFilter.class
+Controllers\exceptions\IllegalOrphanException.class
+View\EmProvider.class
+Controllers\UserJpaController.class
+Controllers\AdministratorJpaController.class
+Controllers\exceptions\NonexistentEntityException.class
+View\ManageAdminBean.class
+Controllers\exceptions\PreexistingEntityException.class
+View\ManageUserBean.class
+View\ManageSessions.class

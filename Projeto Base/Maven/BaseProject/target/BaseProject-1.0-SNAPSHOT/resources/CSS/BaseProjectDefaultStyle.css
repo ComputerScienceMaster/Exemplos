@@ -1,0 +1,493 @@
+
+.panelEdicaoUsuario{
+    float:left; 
+    width: 50%; 
+    margin-left: 25%;
+}
+
+.credito{
+    float:left; 
+    font-size: 2vw; 
+    font-family: impact;
+    width: 100%;
+    text-align: center;
+}
+
+.imgAlbumAtividade{
+    width: 100%;
+    height: 18vw;
+    object-fit: cover;
+}
+
+.quadro{
+    float:left;
+    width: 98%;
+}
+
+.fillArea{
+    width: 99%;
+}
+
+.AdicionarNovoMarcador{
+    float:left; 
+    width: 30%; 
+    margin-left: 10%; 
+    margin-top: 5%;
+}
+
+.painelBuscaMarcadores{
+    width: 50%;
+    float: left;
+}
+
+.imagemVisualizador{
+    float:left; 
+    width: 75%;
+}
+
+.containerMensagemSucesso{
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 50px 50px 50px 50px;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+.textoExtenso{
+    font-size: 1.2vw;
+    font-family: Play;
+    color: #333;
+    display: block;
+    text-align: justify;
+    width: 90%;
+    margin: 5%;
+}
+
+.textoCurto{
+    font-size: 2vw;
+    font-family: sans-serif;
+    color: #333;
+    display: block;
+    text-align: center;
+    width: 100%
+
+}
+
+.bannerSucesso{
+    font-size: 5vw;
+    font-family: impact;
+    color: #33B73E;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+#logo{
+    float: left;
+    margin-left: 19%;
+    margin-top: 2%;
+}
+
+.bigButton{
+    font-size: 2vw;
+    font-family: impact;
+    font-weight: normal;
+}
+
+.mediumButton{
+    font-size: 1.5vw;
+    font-family: impact;
+    font-weight: normal;
+    color: #fff
+}
+
+.headerLogoSite{
+    text-align: center;
+    width: 100%;
+    min-height: 10%;
+    background-color: #e3e3e3;
+    float: left;
+}
+
+.headerLogoTitulo{
+    font-family: Pacifico;
+    font-size: 5vw;
+    font-weight: normal;
+    margin: 5%;
+    color:#c9c9c9;
+}
+
+body{
+    background-attachment: fixed; /* force image to stay put */
+}
+
+.cabecalho{
+    float: right;
+    width: 100%;
+}
+
+.sideMenu{
+
+    float: left;
+    margin: 20px;
+    background-color: #525252;
+    width: 21%;
+    height: 100%;
+    box-shadow: 4px 1px 3px #444444;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.navigationBar{
+
+    list-style-type: none;
+    float: left;
+    font-family: verdana;
+    font-size: 1vw;        
+    color: #e8f1f8;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+
+}
+
+.navigationBar li{
+    text-align: center;
+    font-family: verdana;
+    font-weight: normal;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    width: 100%;
+    height: 100%;
+}
+
+.tituloNav{
+    text-align: center;
+    font-family: impact;
+    font-weight: lighter;
+    float: left;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    margin-left: 1%;
+    font-size: 1.5vw;
+    padding: 0.5%;
+    width: 97%;
+    background-color: #fff;
+    color: #333;
+    border-radius:10px 10px 10px 5px;
+    border-top: 1px solid #D0D1D3;
+    border-bottom: 1px solid #D0D1D3;
+
+
+}
+
+.tituloTopico{
+    text-align: center;
+    font-family: Oswald;
+    font-weight: lighter;
+    float: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    font-size: 2vw;
+    padding: 0.5%;
+    width: 97%;
+    background-color: #444444;
+    color: #e3e3e3;
+    border-radius:10px 10px 10px 5px;
+    border-top: 1px solid #D0D1D3;
+    border-bottom: 1px solid #D0D1D3;
+
+}
+
+.formLogin{
+    margin-top: 30vh;
+    width: 35%;
+    margin-left: 32vw;
+
+}
+
+.textoExibirAtividade{
+    margin: 3%;
+    padding: 1%;
+    text-align: justify;
+    font-size: 1.2vw;
+    border-radius: 5px 5px 5px 5px;
+    float: left; 
+    width: 95%;
+}
+
+.content{
+    float:left;
+    width: 100%;
+    height: 100%;
+    background-color: #9ad3de;
+}
+
+.page-content{
+    width: 55%;
+    float:left;
+    padding: 10px;
+    min-height: 85vh;
+}
+
+.page-content p{
+    font-family: verdana;
+    float: left;
+
+}
+
+.page-content a{
+    text-decoration: none;
+    color: #333;
+
+}
+
+.page-content a:hover{
+    color: #4fb2ff;
+    transition: 0.5s ease-in-out;
+}
+
+.footer{
+    clear: both;
+    background-color: #e3e3e3;
+    margin: 0%;
+    border-top: 4px dashed #9ad3de;
+}
+
+.endereco div{
+    font-family:verdana;
+    font-size: 1vw;
+    color: #000;
+    font-weight: 100;
+    width: 100%;
+    text-align: center;
+    padding-top: 1%;
+}
+
+.admin href{
+    font-family:verdana;
+    font-size: 1.8vw;
+    color: #fff;
+    font-weight: 100;
+    padding-top: 4%;
+}
+
+.contatos div{
+    font-family:verdana;
+    font-size: 1vw;
+    color: #000;
+    font-weight: 100;
+    padding-top: 4%;
+}
+
+.endereco{
+    float: left;
+    margin-left: 3%;
+    width: 30%;
+}
+
+.compartilhe{
+    text-align: center;
+    float: left; 
+    margin-left: 3%;
+    width: 30%;
+}
+
+.contatos{
+    text-align: center;
+    margin-left: 3%;
+    width: 30%;
+    float: left;
+}
+
+.admin{
+    text-align: center;
+    margin-left: 5%;
+    float: right;
+}
+
+.imgNav{
+    max-width: 10%;
+    max-width: 10%;
+}
+
+.imgFot{
+    max-width: 20%;
+    max-height: 20%;
+}
+
+.footer h4{
+    font-family: impact;
+    text-align: center;
+    font-size: 2vw;
+    color: #fff;
+    font-weight: 100;
+    background-color: #79B4CC;
+    border-radius: 8px 8px 8px 8px;
+    margin:3%;
+}
+
+.positionSideLinks{
+    float: right;
+    width: 18%;
+}
+
+.separator{
+    float: right;
+    width: 100%;
+    height: 1vw;
+    background-color: #6ed3cf;
+    border-top: 2px dashed #e3e3e3;
+}
+
+.positionSideMenu{
+    float: left;
+    width: 25%;
+    height: 100%;
+
+}
+
+.colorLink{
+    background-color: #e6af4b;
+    color:#333;
+    font-family: Oswald;
+    text-align: center;
+    font-size: 2vw;
+    margin-right: 10%;
+    margin-top: 10%;
+    padding: 10%;
+    border: 1px dashed #333;
+
+}
+
+.first{
+    background-color: #c9c9c9;
+}
+
+.second{
+    background-color: #e3e3e3;
+}
+
+.third{
+    background-color: #9ad3de
+        ;
+}
+
+.forth{
+    background-color: #6ed3cf;
+}
+
+.texto-footer{
+    padding: 1%;
+    color: #333;
+    font-size: 1.2vw; 
+    font-weight: bold; 
+    text-align: center;
+}
+
+.bannerComImagem{
+    width: 45%;
+    height: 100%;
+    float:left;
+    background-color: #FFF;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 2px 2px 2px #999;
+    border: 1px solid #ccc;
+    margin: 1%;
+
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+
+.bannerComImagemTexto{
+    text-align: center;
+    float:left;
+    width: 70%;
+}
+
+.bannerComImagemTexto #tituloPrincipal{
+    font-size: 1vw; 
+    font-weight: 600;
+}
+
+.bannerComImagemTexto #primeiroSubtopico{
+    font-size: 1vw; 
+    font-weight: 600;
+}
+
+.bannerComImagemTexto #segundoSubtopico{
+    font-size: 1vw; 
+}
+
+.bannerComImagemImagem{
+    float:left;
+    width: 30%;
+    height: 100%;
+}
+
+.todosDireitosReservados{
+    clear: both;
+    padding: 3%;
+    color: #222; 
+    font-size: 0.9vw; 
+    font-weight: bold; 
+    text-align: center;
+}
+
+.todosDireitosReservados a{
+    text-decoration: none;
+    color: #222;
+}
+
+.adminPageContent{
+    width: 100%; 
+    height: 100vh; 
+    float:left
+}
+
+.usuarioSenhaGrid{
+    width: 100%;
+}
+
+.centralizar{
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.imgPrincipalAtividade{
+    width: 98%;
+    height: 18vw;
+    object-fit: cover;
+}
+
+.formWhiteBackground{
+    background-color: RGBA(255,255,255,0.7);
+    border-radius: 5px 5px 5px 5px;
+    width: 98%;
+    padding: 3%
+}
+
+
+.link{
+    color:#fff;
+}
+.link:hover{
+    color:#d58512;
+    text-decoration: none;
+}
+
+/*ADMINISTRATIVE AREA*/
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}

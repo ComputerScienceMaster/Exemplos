@@ -1,0 +1,26 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p ="http://primefaces.org/ui"
+    xmlns:fn='http://java.sun.com/jsp/jstl/core'>
+    <h:form>     
+        <p:growl id="messages" showDetail="true" />
+        <p:toolbar>
+             <f:facet name="left">
+                    <fn:set var="homevar" scope="session" value="#{session.getValue('usr')}"/>
+                    <fn:if test="${homevar != null}">
+                        <h:form>
+                            <p:commandButton value="Início" action="#{ManageAdminBean.gotoManageAdministrator()}" icon="ui-icon-home" />
+                        </h:form>
+                    </fn:if>
+                </f:facet>
+            <f:facet name="right">
+                <p:menuButton value="Options">
+                    <p:menuitem value="Sair" action="#{ManageAdminBean.logout()}" update="messages" />
+                </p:menuButton>
+            </f:facet>
+        </p:toolbar>
+    </h:form>
+</ui:composition>

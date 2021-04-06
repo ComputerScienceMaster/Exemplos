@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:include src="/Private/Includes/HeadIncludesAdmin.xhtml"/>
+
+
+    <body>
+    
+            <div class="container">
+                <h:form class="form-signin">
+                    <h2 class="form-signin-heading">#{messages.pleaseSignIn}</h2>
+                    <label for="inputEmail" class="sr-only">#{messages.emailAddress}</label>
+                    <h:inputText a:type="text" id="inputEmail" value="#{ManageAdminBean.actualAdministrator.loginAdministrator}" class="form-control" a:placeholder="#{messages.emailAddress}" />
+                    <label for="inputPassword" class="sr-only">#{messages.password}</label>
+                    <h:inputText a:type="password" id="inputPassword" value="#{ManageAdminBean.actualAdministrator.passwordAdministrator}" class="form-control" a:placeholder="#{messages.password}" />
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="#{messages.rememberMe}"/> #{messages.rememberMe}
+                        </label>
+                    </div>
+                    <h:commandButton class="btn btn-lg btn-primary btn-block" action="#{ManageAdminBean.doLogon()}" value="#{messages.login}"/>
+                </h:form>
+            </div>
+    </body>
+</html>
+

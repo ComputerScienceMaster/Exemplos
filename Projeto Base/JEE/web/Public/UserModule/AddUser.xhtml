@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:include src="/Public/Includes/HeadIncludesPublic.xhtml"/>
+
+    <h:body>
+
+        <div class="content">
+            <ui:include src="/Public/Components/Headers/Header.xhtml"/>
+            <ui:include src="/Public/Components/Navs/DefaultNav.xhtml"/>
+
+            <div class="page-content">
+                <div class="tituloTopico">Cadastrar Novo Usuário</div>
+                <div class="textoExtenso">
+                    Mussum Ipsum, cacilds vidis litro abertis. Ta deprimidis, eu conheço 
+                    uma cachacis que pode alegrar sua vidis.” Delegadis gente finis, 
+                    bibendum egestas augue arcu ut est. Posuere libero varius. Nullam 
+                    a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Quem num gosti 
+                    di mum que vai caçá sua turmis! <br/><br/>
+
+                    Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis!
+                    in elementis mé pra quem é amistosis quis leo. Per aumento de cachacis,
+                    eu reclamis. Nullam volutpat risus nec leo commodo, ut interdum diam
+                    laoreet. Sed non consequat odio.</div>
+
+                <p:growl autoUpdate="true"/>
+
+                <h:form style="float:left; width: 90%; margin: 3%">
+                    <div  class="formWhiteBackground">
+                        <div class="form-group">
+                            <h:inputText a:placeholder="Digite o nome do Usuário" class="form-control"  value="#{ManageUserBean.actualUser.loginUser}" />  
+                        </div>
+                        <div class="form-group">
+                            <p:commandButton  class="form-control"  value="Validar Usuário" update="@form" action="#{ManageUserBean.isUserAvaliable(ManageUserBean.actualUser.loginUser)}"/>
+                        </div>
+
+                        <fn:set var="user" scope="session" value="#{ManageUserBean.validUser}"/>
+
+                        <fn:choose>
+                            <fn:when  test="${user}">
+                                <span class="btn btn-success centralizar mediumButton">Usuario Disponível</span>
+                            </fn:when>
+                            <fn:when test="${!user}">
+                                <span class="btn btn-primary centralizar mediumButton">Insira um usuário válido</span>
+                            </fn:when>
+                        </fn:choose>
+                    </div>
+                </h:form>
+
+
+                <h:form style="float:left; width: 90%; margin: 3%">
+                    <div  class="formWhiteBackground">
+                        <div class="form-group">
+                            <p:fileUpload id="Imagem"  
+                                          required="true" 
+                                          sizeLimit="300000" 
+                                          requiredMessage="A foto principal é obrigatória" 
+                                          auto="false" 
+                                          update="@form" 
+                                          fileLimit="1" 
+                                          fileUploadListener="#{ManageUserBean.uploadUserImage}" 
+                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/"  />
+                        </div>
+                        <div class="form-group">
+                            <p:graphicImage width="300" height="300" cache="false" class="img-thumbnail" value="#{ManageUserBean.actualImage}" />
+                        </div>
+                        <div class="form-group">
+                            <h:inputText a:placeholder="Digite sua senha" a:type="password" validatorMessage="Senha de confirmação diferente" class="form-control" required="true" requiredMessage="Por favor, digite sua senha"  value="#{ManageUserBean.actualUser.passwordUser}" /> 
+                        </div>
+                        <div class="form-group">
+                            <h:inputText a:type="password" a:placeholder="Digite novamente sua senha" required="true" requiredMessage="Por favor, confirme sua senha" class="form-control"  value="#{ManageUserBean.actualUser.passwordUser}" /> 
+                        </div>
+                        <div class="form-group">
+                            <h:inputText a:placeholder="Digite o seu primeiro nome" class="form-control"  value="#{ManageUserBean.actualUser.nameUser}" /> 
+                        </div>
+                        <div class="form-group">
+                            <h:inputText a:placeholder="Digite seu sobrenome" class="form-control"  value="#{ManageUserBean.actualUser.lastNameUser}" /> 
+                        </div>
+                        <div class="form-group">
+                            <h:inputText class="form-control" a:placeholder="Digite seu E-mail" required="true" size="40" requiredMessage="Por favor, Digite seu e-mail"
+                                         validatorMessage="Formato de e-mail Invalido" value="#{ManageUserBean.actualUser.emailUser}" >
+                                <f:validateRegex
+                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </h:inputText> 
+                        </div>
+                        <div class="form-group">
+                            <h:commandButton  class="form-control"  value="Adicionar" action="#{ManageUserBean.finishAddUser('Public')}"/> 
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+            <ui:include src="/Public/Components/Aside/ColorfulLinks.xhtml"/>
+        </div>
+        <ui:include src="/Public/Components/Footers/DefaultFooter.xhtml"/>
+    </h:body>
+</html>
+

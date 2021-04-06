@@ -1,0 +1,133 @@
+.brasaoNav{
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.brasaoNavContainer{
+    margin: 7%;
+    margin-top:20%;
+    text-align: center;
+}
+
+.imgPainelUsuario{
+    margin-left: 28%;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    
+}
+
+.textoNavContainer{
+    margin: 5%;
+    text-align: justify;
+}
+
+.imgNoticia{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.imgAlbum{
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.centralizar{
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.justificarTexto{
+    text-align: justify;
+}
+
+.smallMargin{
+    margin: 2%;
+}
+
+.textoNoticiaMobile *{
+    text-align: justify;
+}
+
+.imgVisualizadorDeImagens{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imgPrincipalAtividade{
+    width: 30vw;
+    height: 30vw;
+    object-fit: cover;
+}
+
+
+.imgMedia{
+    width: 50%;
+    height: 50%;
+}
+
+.imgFull{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.bemVindoMobile{
+    font-family: impact;
+    font-size:15vw;
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #1c94c4;
+    font-weight: 100;
+}
+
+.imgAlbumCompletoInstafeed{
+    width: 50%;
+    height: 50%;
+}
+
+.instagramPropaganda{
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+}
+
+.headerCinza{
+    font-family: impact;
+    font-size: 5vw;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #ECECEC;
+    color: #333;
+    display: block;
+    text-align: center;
+    font-weight: 100;
+}
+
+.instagramPropagandaHeader{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 10px 0px 10px 0px;
+    background-color: #009A05 ;
+    color: #fff;
+    display: block;
+    text-align: center;
+    font-weight: 900;
+}
+
+.tituloTopico{
+    display: block;
+    font-family: Impact;
+    font-weight: 100;
+    width: 100%;
+    color: #333;
+    text-align: center;
+    font-size: 7vw;
+
+}

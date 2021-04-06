@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p ="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:include src="/Private/Includes/HeadIncludesAdmin.xhtml" />
+
+    <h:body>
+        <div class="content">
+
+            <div class="cabecalho">
+                <ui:include src="/Private/Components/Headers/DefaultAdminHeader.xhtml" />
+            </div>
+            <ui:include src="/Private/Components/Navs/DefaultAdminNav.xhtml" />
+            <h:form>
+
+                <div class="page-content">
+                    <h1 class="tituloTopico">Painel administrativo</h1>
+                    <div class="formWhiteBackground">
+                        <p:growl autoUpdate="true"/>
+                        <h:form>
+                            <div class="form-group">
+                                <h:inputText class="form-control" a:placeholder="Digite o login do novo Administrador" value="#{ManageAdminBean.actualAdministrator.loginAdministrator}" /> 
+                            </div>
+                            <div class="form-group">
+                                <h:inputText class="form-control" a:type="password" a:placeholder="Digite a senha" value="#{ManageAdminBean.actualAdministrator.passwordAdministrator}" /> 
+                            </div>
+                            <div class="form-group">
+                                <h:inputText class="form-control" a:type="password" a:placeholder="Confirme a senha" value="#{ManageAdminBean.actualAdministrator.passwordAdministrator}" /> 
+                            </div>
+                            <div class="form-group">
+                                <h:commandButton class="form-control btn btn-default" value="Adicionar" action="#{ManageAdminBean.finishAddAdministrator()}"/> 
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+        <ui:include src="/Private/Components/Footers/SlimFooter.xhtml"/>
+    </h:body>
+</html>
+

@@ -1,0 +1,36 @@
+{
+  "name": "UserAccount",
+  "plural": "UserAccounts",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "generated": true,
+      "id": true
+    },
+    "loginUserAccount": {
+      "type": "string",
+      "required": true
+    },
+    "passwordUserAccount": {
+      "type": "string",
+      "required": true
+    },
+    "nameUserAccount": {
+      "type": "string",
+      "required": true
+    },
+    "emailUserAccount": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
