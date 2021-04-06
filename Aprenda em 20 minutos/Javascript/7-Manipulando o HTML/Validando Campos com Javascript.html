@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Validando componentes utilizando JS</title>
+</head>
+<body>
+	<h1>Cadastro</h1>
+	<div id="messages"></div>
+	<form method="get">
+		<input type="text" id="name" placeholder="digite seu nome" name="name"/>
+		<input type="password" id="senha" placeholder="digite uma senha" name="senha"/>
+		<input type="text" id="cpf" onfocusout="validarCPF()" placeholder="Digite o seu CPF" name="CPF"/>
+		<input type="email" id="email" placeholder="Digite seu e-mail" name="email"/>
+		<input type="button" id="enviar" name="Enviar" onclick="enviarDados()" value="Enviar">
+	</form>
+	<div id="cadastro"></div>
+
+	<script type="text/javascript">
+		function enviarDados(){
+			var name = document.getElementById('name');
+			var cadastro = document.getElementById('cadastro');
+			cadastro.innerHTML = "O usuário " + name.value + " foi cadastrado com sucesso" ;
+		}
+
+		function validarCPF(){
+			var cpf = document.getElementById('cpf');
+			var messages = document.getElementById('messages');
+			//faça aqui sua validação de CPF
+			messages.innerHTML = "CPF válido: " + cpf.value
+			
+		}
+
+
+
+	</script>
+</body>
+</html>

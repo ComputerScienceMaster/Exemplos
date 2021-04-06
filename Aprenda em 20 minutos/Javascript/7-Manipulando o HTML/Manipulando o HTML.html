@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=pt-BR>
+
+<head>
+    <title>JS DOM Manipulation</title>
+    <meta charset="utf-8" />
+</head>
+
+
+<script type="text/javascript">
+    function send(){
+        var a = document.getElementById('text');
+        a.innerHTML = document.getElementById('sendText').value;
+    }
+</script>
+
+<style>
+    body{
+        background-color: aquamarine;
+    }
+    #section1 {
+        width: 100%;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #section2 {
+        width: 100%;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<body>
+    <section id="section1">
+        <input id="sendText" type="text"/>
+        <button onclick="send()">Enviar</button>
+    </section>
+    <section id="section2">
+        <h1 id="text">Oi</h1>
+    </section>
+</body>
+
+</html>
