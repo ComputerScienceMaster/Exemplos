@@ -18,7 +18,7 @@
     "express": "^4.14.0",
     "express-load": "^1.1.16",
     "express-validator": "2.12.1",
-    "morgan": ">=1.7.0",
+    "morgan": ">=1.9.1",
     "request": "^2.88.0",
     "serve-favicon": ">=2.3.0",
     "sqlite3": "^3.0.8"
