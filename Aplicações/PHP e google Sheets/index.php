@@ -1,35 +1,13 @@
 <html>
     <head>
         <title>CSM Store</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        <?php require_once 'elements/head.php'; ?>
+
     </head>
     <body style="background-color: #fefefe">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
-            <a class="navbar-brand" href="#" style="font-family: 'Shadows into light'" >CSM Store</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+       
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Produtos<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Fale conosco</a>
-                    </li>
-            </div>
-        </nav>
-
+        <?php require_once 'elements/navbar.php'; ?>
         <div class="container">
             <div style="background-color: #6600a5">
                 <h1 class="jumbotron" style="background-color: #6600a5; color: #fff; font-family: 'Shadows into light'; text-align: center; font-size: 100px">CSM Store</h1>    
@@ -37,7 +15,7 @@
                     <h2>Informática</h2>
                     <div class="row">
                         <?php
-                        $url = 'https://spreadsheets.google.com/feeds/cells/19vT4qkWn-PdfvIwKI9sVnDrOFqzb_fjeN9sEGhrNqE8/1/public/full?alt=json';
+                        $url = 'http://spreadsheets.google.com/feeds/cells/1wwcACuc_stTUGohsk_4ReCtDzzOyDUmAE3WnKwCBO5k/1/public/full?alt=json';
                         $file = file_get_contents($url);
                         $produtosDeInformatica = json_decode($file);
                         $produtos = $produtosDeInformatica->{'feed'}->{'entry'};
@@ -99,8 +77,8 @@
             </div>
 
 
-            <div id='footer' style="background-color: #6600a5; color:#fff; font-family: 'shadows into light'; font-size: 20px; text-align: center; padding: 20px">
-                <div>Produto desenvolvido por ComputerScienceMaster</div>
+            <div id='footer' style="background-color: #6600a5; color:#fff; font-family: 'helvetica'; font-size: 20px; text-align: center; padding: 20px">
+                <div>Esse site foi desenvolvido por ComputerScienceMaster e está sob <a href="https://creativecommons.org/licenses/by-sa/4.0/"> Creative Commons ShareALike International license </a> </div>
             </div>
         </div>
 
