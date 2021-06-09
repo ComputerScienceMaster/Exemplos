@@ -78,7 +78,7 @@
 
 
             <div id='footer' style="background-color: #6600a5; color:#fff; font-family: 'helvetica'; font-size: 20px; text-align: center; padding: 20px">
-                <div>Esse site foi desenvolvido por ComputerScienceMaster e está sob <a href="https://creativecommons.org/licenses/by-sa/4.0/"> Creative Commons ShareALike International license </a> </div>
+                <div>Esse site foi desenvolvido por ComputerScienceMaster e está sob a licença do MIT</div>
             </div>
         </div>
 
