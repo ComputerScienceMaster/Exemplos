@@ -26,3 +26,7 @@ Claro, toda e qualquer contribuição é bem vinda. Algumas sugestões são:
  - Criar novas versões utilizando outras tecnologias
  - Melhorar a implementação atual com validações ou melhorias de interface
  - Produzir uma documentação melhor e com mais detalhes de como usar, instalar, configurar os exemplos em diferentes sistemas operacionais. 
+
+# Licença
+
+Esse software está sob a licença apache 2.0
