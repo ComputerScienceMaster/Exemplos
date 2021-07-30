@@ -43,9 +43,11 @@ Utilize a seção de Issues desse repositório para tirar dúvidas e também apo
 
 # Licença 
 
-Todos esses exercícios estão sob a licença Creative Commons Attribution-ShareAlike 4.0 International License. Isso significa que você pode compartilhar, remixar, etc. Porém, é necessário que você faça uma atribuição (link) para nosso website.
+Todos esses exemplos estão no nosso website e o texto está sob a licença Creative Commons Attribution-ShareAlike 4.0 International License. Isso significa que você pode compartilhar, remixar, etc. Porém, é necessário que você faça uma atribuição (link) para nosso website.
 
 Saiba mais sobre essa licença aqui:
 
 https://creativecommons.org/licenses/by-sa/4.0/
+
+No entanto, muitas vezes cada software criado precisam de licenças específicas. Sendo assim, colocamos o arquivo da licença em cada pasta.
 
