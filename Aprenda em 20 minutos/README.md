@@ -18,4 +18,6 @@ Os tutoriais produzidos pela comunidade ganham espaço em nosso blog também e v
 
 ## Licença
 
-Todo código produzido aqui e os tutoriais estão sob licenças permissivas (open source) e devem ser mantidas assim. Esse projeto em específico está sob licença Apache 2.0. 
+Esse projeto em específico está sob licença Apache 2.0. e todo código produzido pelo nosso website estão em sua grande maioria sob licenças permissivas (open source) e devem ser mantidas assim. Lembre-se que ao utilizar esse código você deve incluir uma referência ao nosso repositório original, ficaremos muito felizes de ver você reutilizando e disseminando conhecimento.
+
+Ajude tornar nossa comunidade mais forte.
