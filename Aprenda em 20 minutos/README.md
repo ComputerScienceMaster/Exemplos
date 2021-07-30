@@ -4,8 +4,6 @@ Aprender novas linguagens de programação podem abrir a sua mente para solucion
 
 O projeto possui um título bastante provocativo, no entanto, nós sabemos que é praticamente impossível aprender uma linguagem em 20 minutos. Isso acontece porque existem tópicos muito específicos criados em cada linguagem para auxiliar os programadores, além disso, novas ferramentas e alterações são feitas todos os dias. Portanto, nosso objetivo aqui é prover um material bastante didático que irá permitir você "sobrevoar" a linguagem e entender como as pessoas estão escrevendo código e resolvendo problemas em outras linguagens.
 
----
-
 ## Como devo usar esses códigos/tutoriais?
 
 Os códigos presentes aqui podem ser usados como um lembrete condensado (uma cola) para lembrar como funcionam os dispositivos mais básicos da linguagem (condicionais, loops, funções, etc.). Além disso, você pode usar esses tutoriais para seus estudos e explorar novos horizontes, ou seja, descobrir qual linguagem você tem maior interesse.
