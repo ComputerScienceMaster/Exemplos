@@ -27,6 +27,4 @@ Na seção de issues, você pode marcar exemplos que você está trabalhando atu
 
 # Licença
 
-Os softwares colocados nesse repositório estão sob licença Apache 2.0 [Clique para saber mais](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
-
-Isso significa que eles foram criados e podem ser reutilizados, porém, é necessário você faça uma atribuição ao nosso repositório.
+Os softwares colocados nesse repositório estão sob múltiplas licenças, porém, a maioria delas são bastante permissivas. Isso significa que os softwares criados e podem ser reutilizados, porém, é necessário você faça uma atribuição ao nosso repositório.
