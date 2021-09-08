@@ -15,9 +15,9 @@ Em primeiro lugar, esse repositório não visa abrigar apenas um sistema altamen
  
 Sendo assim, cada pasta dessa seção do nosso repositório de exemplos armazenará um exemplo que conta com um tutorial explicando:
 
-a. objetivo 
-b. como ele funciona 
-c. como executar (requisitos). 
+1. Objetivo 
+2. Como ele funciona 
+3. Como executar (requisitos). 
 
 # Contribuição
 
