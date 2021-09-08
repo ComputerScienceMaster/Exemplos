@@ -8,7 +8,16 @@ Imagine, por exemplo, um pedreiro que precisa reaprender construir uma casa toda
 
 # Objetivo desse repositório
 
-Em primeiro lugar, esse repositório não visa abrigar apenas um sistema altamente completo e complexo (o que é comum no GitHub). Aqui você vai encontrar micro-sistemas que desempenham uma função muito específica e você pode usá-los basicamente para dois fins: 1) estudar uma técnica, 2) encaixar essa funcionalidade em um sistema maior. Sendo assim, cada pasta dessa seção do nosso repositório de exemplos armazenará um exemplo que conta com um tutorial explicando a) objetivo b) como ele funciona c) como executar (requisitos). 
+Em primeiro lugar, esse repositório não visa abrigar apenas um sistema altamente completo e complexo (o que é comum no GitHub). Aqui você vai encontrar micro-sistemas que desempenham uma função muito específica e você pode usá-los basicamente para dois fins: 
+
+1. Estudar uma técnica 
+2. Encaixar essa funcionalidade em um sistema maior. 
+ 
+Sendo assim, cada pasta dessa seção do nosso repositório de exemplos armazenará um exemplo que conta com um tutorial explicando:
+
+a. objetivo 
+b. como ele funciona 
+c. como executar (requisitos). 
 
 # Contribuição
 
