@@ -2,9 +2,9 @@
 
 Você já teve aquela pasta no seu computador em que você guarda aqueles projetos feitos no período da faculdade ou então aquele código que você começou e decidiu não se aprofundar muito naquela ideia? Acho que todos nós programadores passamos por isso de alguma forma...
 
-A gestão de projetos pequenos é quase uma arte "oculta" que poucos professores e profissionais costumam ensinar. Na verdade, isso tudo tem a ver com gestão de conhecimento e como você adquire, reutiliza, compartilha e descarta esse conhecimento, portanto, a forma com que você gerencia essas informações e deixa elas disponíveis para as pessoas (incluindo você mesmo) pode ser um grande diferencial na sua carreira. 
+A gestão de projetos pequenos é quase uma arte "oculta" que poucos professores e profissionais costumam ensinar. Na verdade, isso tudo tem a ver com gestão de conhecimento e como você adquire, reutiliza, compartilha e descarta esse conhecimento. Portanto, a forma com que você gerencia essas informações e deixa elas disponíveis para as pessoas (incluindo você mesmo) pode ser um grande diferencial na sua carreira. Imagine, por exemplo, um pedreiro que precisa reaprender construir uma casa todas as vezes que ele precisa entrar em uma nova construção (novo projeto). Pois é, parece bastante inviável, mas muitas vezes você (programador) aprende a reconstruir um software do zero simplesmente porque você não fez a gestão correta dos seus conhecimentos. 
 
-Imagine, por exemplo, um pedreiro que precisa reaprender construir uma casa todas as vezes que ele precisa entrar em uma nova construção (novo projeto). Pois é, parece bastante inviável, mas muitas vezes você (programador) aprende a reconstruir um software do zero simplesmente porque você não fez a gestão correta dos seus conhecimentos. 
+Esse repositório visa solucionar essa pequena dor diária da nossa área e agrupa vários exemplos muito legais criados durante um longo período de tempo aprendendo coisas novas. 
 
 # Objetivo desse repositório
 
