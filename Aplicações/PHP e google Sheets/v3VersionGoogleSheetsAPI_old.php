@@ -15,18 +15,13 @@
                     <h2>Informática</h2>
                     <div class="row">
                         <?php
-                        // Antigo link descontinuado da versão 3
-                        //$url = 'http://spreadsheets.google.com/feeds/cells/1wwcACuc_stTUGohsk_4ReCtDzzOyDUmAE3WnKwCBO5k/1/public/full?alt=json';
-                        // usando csv
-                        //$url = 'https://docs.google.com/spreadsheets/d/1wwcACuc_stTUGohsk_4ReCtDzzOyDUmAE3WnKwCBO5k/gviz/tq?tqx=out:csv'
-                        // novo V4
-                        $url = 'https://sheets.googleapis.com/v4/spreadsheets/1wwcACuc_stTUGohsk_4ReCtDzzOyDUmAE3WnKwCBO5k/values/page1!A1:Z200?majorDimension=ROWS&key=AIzaSyDMb2CKRuyCRJsm_AE3zPH7DXygEzqQ4Zk';
+                        $url = 'http://spreadsheets.google.com/feeds/cells/1wwcACuc_stTUGohsk_4ReCtDzzOyDUmAE3WnKwCBO5k/1/public/full?alt=json';
                         $file = file_get_contents($url);
                         $produtosDeInformatica = json_decode($file);
                         $produtos = $produtosDeInformatica->{'values'};
                         print_r($produtos);
                       
-                        /*
+                        
                         $produtos = $produtosDeInformatica->{'feed'}->{'entry'};
 
                         $prodAsStrings = Array();
@@ -79,7 +74,7 @@
 
 
                             <?php
-                        }*/
+                        }
                         ?>
                     </div>
                 </div>
