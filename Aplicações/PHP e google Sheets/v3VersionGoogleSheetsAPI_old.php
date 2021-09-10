@@ -1,12 +1,3 @@
-<?php
-
-$sheetID = "<Id da sua planilha>";
-$key = "<chave de acesso de API>";
-$sheetName = "<nome da sua planilha>";
-$range = "A1:Z200";
-
-?>
-
 <html>
     <head>
         <title>CSM Store</title>
@@ -24,32 +15,61 @@ $range = "A1:Z200";
                     <h2>Informática</h2>
                     <div class="row">
                         <?php
-                      // Novo link adaptado para versão V4 da API do google
-                        $url = "https://sheets.googleapis.com/v4/spreadsheets/$sheetID/values/$sheetName!$range?majorDimension=ROWS&key=$key";
+                        // Antigo link descontinuado da versão 3
+                        //$url = 'http://spreadsheets.google.com/feeds/cells/1wwcACuc_stTUGohsk_4ReCtDzzOyDUmAE3WnKwCBO5k/1/public/full?alt=json';
+                        // usando csv
+                        //$url = 'https://docs.google.com/spreadsheets/d/1wwcACuc_stTUGohsk_4ReCtDzzOyDUmAE3WnKwCBO5k/gviz/tq?tqx=out:csv'
+                        // novo V4
+                        $url = 'https://sheets.googleapis.com/v4/spreadsheets/1wwcACuc_stTUGohsk_4ReCtDzzOyDUmAE3WnKwCBO5k/values/page1!A1:Z200?majorDimension=ROWS&key=AIzaSyDMb2CKRuyCRJsm_AE3zPH7DXygEzqQ4Zk';
                         $file = file_get_contents($url);
                         $produtosDeInformatica = json_decode($file);
                         $produtos = $produtosDeInformatica->{'values'};
-                        echo '<pre>';
                         print_r($produtos);
-                        echo '</pre>';
-                        
+                      
+                        /*
+                        $produtos = $produtosDeInformatica->{'feed'}->{'entry'};
+
+                        $prodAsStrings = Array();
+                        foreach ($produtos as $prod) {
+                            array_push($prodAsStrings, $prod->{'gs$cell'}->{'$t'});
+                        }
+
+                        $produtosObjetos = Array();
+                        for ($i = 0; $i < sizeof($prodAsStrings); $i = $i + 5) {
+                            $nome = $prodAsStrings[$i];
+                            $categoria = $prodAsStrings[$i + 1];
+                            $descricao = $prodAsStrings[$i + 2];
+                            $imagem = $prodAsStrings[$i + 3];
+                            $preco = $prodAsStrings[$i + 4];
+
+                            $item = Array();
+
+                            array_push($item, $nome);
+                            array_push($item, $categoria);
+                            array_push($item, $descricao);
+                            array_push($item, $imagem);
+                            array_push($item, $preco);
+
+                            array_push($produtosObjetos, $item);
+                        }
+                       
 
                         
-                        for ($i = 1; $i < sizeof($produtos); $i++) {
+                        for ($i = 1; $i < sizeof($produtosObjetos); $i++) {
                             ?>
 
                                 <div class="col-md-6 card-deck mb-3 text-center">
                                     <div class="card mb-4 shadow-sm">
                                         <div style="text-align: center">
-                                            <img height="300" width="300" src="<?= $produtos[$i][3] ?>">
+                                            <img height="300" width="300" src="<?= $produtosObjetos[$i][3] ?>">
                                         </div>
                                         <div class="card-header">
-                                            <h4 class="my-0 font-weight-normal"><?= $produtos[$i][0] ?></h4>
+                                            <h4 class="my-0 font-weight-normal"><?= $produtosObjetos[$i][0] ?></h4>
                                         </div>
                                         <div class="card-body">
-                                            <h1 class="card-title pricing-card-title"><?= $produtos[$i][4] ?></h1>
+                                            <h1 class="card-title pricing-card-title"><?= $produtosObjetos[$i][4] ?></h1>
                                             <div>
-                                                <?= $produtos[$i][2] ?>
+                                                <?= $produtosObjetos[$i][2] ?>
                                             </div>
                                             <button type="button" class="btn btn-lg btn-block btn-outline-primary">Comprar agora</button>
                                         </div>
@@ -59,7 +79,7 @@ $range = "A1:Z200";
 
 
                             <?php
-                        }
+                        }*/
                         ?>
                     </div>
                 </div>
