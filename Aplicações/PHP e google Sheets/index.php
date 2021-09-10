@@ -29,11 +29,7 @@ $range = "A1:Z200";
                         $file = file_get_contents($url);
                         $produtosDeInformatica = json_decode($file);
                         $produtos = $produtosDeInformatica->{'values'};
-                        echo '<pre>';
-                        print_r($produtos);
-                        echo '</pre>';
-                        
-
+                      
                         
                         for ($i = 1; $i < sizeof($produtos); $i++) {
                             ?>
