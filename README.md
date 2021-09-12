@@ -1,4 +1,8 @@
+
+
 # Repositório de Exemplos
+
+[![GitHub commits](https://badgen.net/github/commits/Naereen/Strapdown.js)](https://GitHub.com/Naereen/StrapDown.js/commit/)
 
 Bem-vindo ao hub de conteúdo do Computer Science Master. 
 
