@@ -3,7 +3,6 @@
 # Repositório de Exemplos
 
 [![GitHub stars](https://img.shields.io/github/stars/ComputerScienceMaster/Exemplos.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/ComputerScienceMaster/Exemplos/stargazers/)
-[![GitHub followers](https://img.shields.io/github/followers/ComputerScienceMaster.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/ComputerScienceMaster?tab=followers)
 
 
 
