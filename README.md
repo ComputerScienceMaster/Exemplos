@@ -2,7 +2,8 @@
 
 # Repositório de Exemplos
 
-[![GitHub commits](https://badgen.net/github/commits/Naereen/Strapdown.js)](https://GitHub.com/Naereen/StrapDown.js/commit/)
+[![GitHub stars](https://img.shields.io/github/stars/ComputerScienceMaster/Exemplos.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/ComputerScienceMaster/Exemplos/stargazers/)
+
 
 Bem-vindo ao hub de conteúdo do Computer Science Master. 
 
