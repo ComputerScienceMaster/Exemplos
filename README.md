@@ -53,5 +53,4 @@ Todos esses exemplos estão no nosso website e o texto está sob a licença Crea
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-**PS: muitas vezes cada software criado precisam de licenças específicas. Sendo assim, colocamos o arquivo da licença em cada pasta.
-**
+**PS: muitas vezes cada software criado precisam de licenças específicas. Sendo assim, colocamos o arquivo da licença em cada pasta.**
