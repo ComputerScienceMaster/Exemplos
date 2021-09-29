@@ -1,8 +1,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define true 1
-#define fase 0
 
 typedef struct node {
     int vertex;
@@ -58,7 +56,7 @@ int createEdge(Graph *gr, int vi, int vf, int p) {
 	return 1;
 }
 
-void imprime(Graph *gr){
+void printGraph(Graph *gr){
 
 	printf("nodes: %d. Arestas: %d. \n",gr->nodes,gr->edges);
 	int i;
@@ -76,13 +74,13 @@ void imprime(Graph *gr){
 
 int main()
 {
-    Graph * gr = createGraph(5);
-	createEdge(gr, 0, 1, 2);
-	createEdge(gr, 1, 2, 4);
-	createEdge(gr, 2, 0, 12);
-	createEdge(gr, 2, 4, 40);
-	createEdge(gr, 3, 1, 3);
-	createEdge(gr, 4, 3, 8);
+    Graph * gr = createGraph(4);
+	createEdge(gr, 0, 2, 4);
+	createEdge(gr, 0, 1, 10);
+	createEdge(gr, 1, 3, 42);
+	createEdge(gr, 2, 3, 21);
+	createEdge(gr, 3, 1, 32);
+	createEdge(gr, 4, 2, 14);
 
-    imprime(gr);
+    printGraph(gr);
 }
