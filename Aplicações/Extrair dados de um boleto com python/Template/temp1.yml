@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+issuer: Escuro S.A.
+keywords:
+- Escuro
+- Escuro S.A.
+fields:
+  amount: <input your regex here>
+  date:
+    - <input your regex here>
+  invoice_number: <input your regex here>
+options:
+  currency: BRL
+  date_formats:
+    - '%d/%m/%Y'
+  decimal_separator: ","
