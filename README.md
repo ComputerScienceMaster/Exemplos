@@ -1,4 +1,10 @@
+
+
 # Repositório de Exemplos
+
+[![GitHub stars](https://img.shields.io/github/stars/ComputerScienceMaster/Exemplos.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/ComputerScienceMaster/Exemplos/stargazers/)
+
+
 
 Bem-vindo ao hub de conteúdo do Computer Science Master. 
 
@@ -45,9 +51,6 @@ Utilize a seção de Issues desse repositório para tirar dúvidas e também apo
 
 Todos esses exemplos estão no nosso website e o texto está sob a licença Creative Commons Attribution-ShareAlike 4.0 International License. Isso significa que você pode compartilhar, remixar, etc. Porém, é necessário que você faça uma atribuição (link) para nosso website.
 
-Saiba mais sobre essa licença aqui:
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-https://creativecommons.org/licenses/by-sa/4.0/
-
-No entanto, muitas vezes cada software criado precisam de licenças específicas. Sendo assim, colocamos o arquivo da licença em cada pasta.
-
+**PS: muitas vezes cada software criado precisam de licenças específicas. Sendo assim, colocamos o arquivo da licença em cada pasta.**
