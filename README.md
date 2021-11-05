@@ -15,19 +15,21 @@ Nesse repositório você encontrará diversos exemplos de código com fins exclu
 - CRUD
 - Estruturas de dados
 
-## Aplicações
+## Projetos Atuais
+
+### Aplicações
 
 Nessa pasta você encontra exemplos simples de scripts e aplicações sem grande complexidade, porém que são muitos úteis para a industria e também para estudante de computação.
 
-## Aprenda em 20 minutos
+### Aprenda em 20 minutos
 
 Aprender uma linguagem de programação exige que você "decore" os mesmo comando em várias sintaxes. Esse projeto tem como objetivo mostrar os principais comandos das linguagens de programação com exemplos simples e fáceis de usar.
 
-## CRUD
+### CRUD
 
 Essa pasta abriga vários exemplos de CRUD (aplicações que fazem inserção, leitura, atualização e deleção) utilizando várias tecnologias diferentes. A inspiração para criar esse projeto nasceu da necessidade de sempre criar os mesmos exemplos didáticos para aprender alguma nova linguagem. Portanto, nesse repositório você vai encontrar vários mashups interessantes que você poderá usar como base para construir seus exemplos.
 
-## Estruturas de dados
+### Estruturas de dados
 
 Nessa pasta você vai encontrar vários exemplos implementados de estruturas de dados bastante populares. Esse tipo de estrutura será uma pedra no seu sapato da universidade, assim, nosso objetivo com esse repositório é ajudar você nessa jornada.
 
