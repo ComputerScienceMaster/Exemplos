@@ -1,42 +1,36 @@
 
-
-
-
 import pandas as pd
+import numpy as np
 
-df = pd.read_csv("ceps.csv", delimiter=",")
-
-
+# import CSV
+df = pd.read_csv("enderecos.csv", delimiter=",")
 
 
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="HeatMapAuto")
 
 
+## pass addresses to API to convert in latitude and longitude
 geocodes = []
 for i in range (0,len(df.index)):    
-    #texto = df['rua'][i] + "," + df['cidade'][i] + "," + df['estado'][i] + "," + df['pais'][i]
-    
-    location = geolocator.geocode(df['ceps'])
-    geocodes.append([location.latitude,location.longitude])
+    texto = df['rua'][i] + "," + df['cidade'][i] + "," + df['estado'][i] + "," + df['pais'][i]
+    location = geolocator.geocode(texto)
+    if (location is not None):
+        geocodes.append([location.latitude,location.longitude])
 
 
-import numpy as np
+# parse geocodes to dataframe
+dfa = pd.DataFrame(geocodes)
 
-a = np.matrix(geocodes)
-dfa = pd.DataFrame(a)
-
+# import folium and OS libraries
 import os
 import folium
-
 print(folium.__version__)
-
 from folium.plugins import HeatMap
 
-m = folium.Map([48., 5.], tiles='stamentoner', zoom_start=6)
 
+m = folium.Map([48., 5.], tiles='stamentoner', zoom_start=6)
 HeatMap(dfa).add_to(m)
 
+# Save folium map in HTML
 m.save(os.path.join('results', 'Heatmap.html'))
-
-m
