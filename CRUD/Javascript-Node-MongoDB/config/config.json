@@ -1,7 +1,0 @@
-{
-    "development": {
-        "dialect": "sqlite",
-        "storage": "./db.development.sqlite",
-        "define": { "freezeTableName": true }
-    }
-}
