@@ -2,3 +2,7 @@
 /JPA - Fechtype/JPAFechTypeExample/dist/
 /JPA - Fechtype/JPAFetchTypeExample/build/
 /JPA - Fechtype/JPAFetchTypeExample/dist/
+package-lock.json
+node_modules
+.env
+.gitignore
