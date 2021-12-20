@@ -20,7 +20,7 @@
     "express-validator": "2.12.1",
     "morgan": ">=1.7.0",
     "sqlite3": "^3.0.8",
-    "sequelize": "4.38.0",
+    "sequelize": ">=4.44.4",
     "sequelize-cli": "^4.0.0",
     "serve-favicon": ">=2.3.0"
   }
