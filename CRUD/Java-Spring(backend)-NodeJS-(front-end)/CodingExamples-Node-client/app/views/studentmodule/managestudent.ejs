@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<% include ../partials/head.ejs %>
+<% include ../partials/header.ejs %>
+<body>
+    <div class="col-md-9" style="margin:13%;">
+        <table class="table table-striped">
+            <tr>
+                <th>id</th>
+                <th>nome</th>
+                <th>Número do passaporte</th>
+                <th>Opções</th>
+            </tr>
+        <% for(var i=0; i<student.length; i++) {%>
+            <tr> 
+            <td><%= student[i].id %></td> 
+            <td><%= student[i].name %></td>
+            <td><%= student[i].passportNumber %></td>
+            <td>
+                <form method="post" action="/deletestudent"> 
+                    <input type="submit" class="btn btn-danger" value="excluir"/> 
+                    <input type="hidden" name="studentToDelete" value="<%= student[i].id %>">
+                </form>
+                <form method="POST" action="/editstudent"> 
+                    <input type="submit" class="btn btn-warning" value="alterar"/>
+                    <input type="hidden" name="studentToEdit" value="<%= student[i].id %>"/>
+                </form>
+                
+            </td>
+            </tr>
+        <% } %>
+        </table>
+    </div>
+</body>
+<% include ../partials/footer.ejs %>

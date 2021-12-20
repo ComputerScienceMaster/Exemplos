@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="col-lg-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>Todos os Perfis</strong>
+		</div>
+
+		{% if user_profiles %}
+			<div class="list-group">
+				{% for usr in user_profiles %}
+					<li class="list-group-item">
+						<a href="{% url 'show_profile' usr.id %}">{{ usr.fullname }} / {{ usr.email }}</a>
+					</li>
+				{% endfor %}
+			</div>
+		{% else %}
+			<p>Nenhum Perfil encontrado</p>
+		{% endif %}
+	</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<form class="form-signin" role="form" action="{% url 'edit_product' product.id%}" method="post">
+
+    {% csrf_token %}
+
+    <h2 class="form-signin-heading">Editar novo produto</h2>
+
+    <input type="text" id="id_name" name="name" class="form-control" value="{{ product.name }}"
+        placeholder="Nome do produto *" required autofocus>
+
+    <input type="date" id="id_expiration" name="expiration" class="form-control" value="{{ product.expiration|date:"Y-m-d" }}"
+        placeholder="Expiração *" required >
+
+    <input type="text" id="id_price" name="price" class="form-control" value="{{ product.price }}"
+        placeholder="Preço *" required >
+
+    <select class="form-control" name="category_selected" id="category_selected">
+        {% for category in categories %}
+            {% if product.category == category%}
+                <option selected value="{{category.id}}">{{category.name}}</option>
+            {% else %}
+                <option value="{{category.id}}">{{category.name}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+
+    <hr />
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Save changes">
+        Save Changes
+    </button>
+
+    <hr/>
+
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                &times;
+            </button>
+            {{form.non_field_errors}}
+        </div>
+    {% endif %}
+
+</form>
+
+{% endblock %}

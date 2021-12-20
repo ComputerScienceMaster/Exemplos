@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <head>
+        <title>Adicionar Pessoa</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h1>Adicione uma pessoa</h1>
+        <h:form>
+            <h:panelGrid columns="1">
+                <h:inputText a:placeholder="Digite seu Login" value="#{managePersonBean.actualPerson.login}"/>
+                <h:inputText a:placeholder="Digite sua senha" value="#{managePersonBean.actualPerson.password}"/>
+                <h:inputText a:placeholder="Digite seu nome" value="#{managePersonBean.actualPerson.name}"/>
+                <h:inputText a:placeholder="Digite seu email" value="#{managePersonBean.actualPerson.email}"/>
+                <h:commandButton value="Cadastrar pessoa" action="#{managePersonBean.edit()}"/>
+            </h:panelGrid>
+        </h:form>
+    </body>
+</html>

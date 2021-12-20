@@ -1,0 +1,16 @@
+model vendedor
+	 - id
+	 - nome
+	 - email
+	 - comissão
+
+model venda
+	- valorDaVenda
+	- dataDaVenda
+	- idVendedor
+
+
+criarVendedor
+listarVendedores
+criarVenda
+listarVendas(idVendedor)

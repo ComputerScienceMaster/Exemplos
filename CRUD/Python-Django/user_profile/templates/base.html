@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<link href="{% static "styles/bootstrap.css" %}" rel="stylesheet">
+		<link href="{% static "styles/main.css" %}" rel="stylesheet">
+		<title>LearnToImplement - Sales</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+
+				<h3 class="text-muted">LearnToImplement</h3>
+                <ul class="nav nav-pills pull-left">
+					<li class=""><a href="{% url 'manageproduct'%}">Products</a></li>
+                    <li class=""><a href="{% url 'manage_sales' %}">Sales</a></li>
+				</ul>
+				<ul class="nav nav-pills pull-right">
+					<li class=""><a href="{% url 'index' %}">{{logged_profile.fullname}}</a></li>
+					<li class=""><a href="/logout/">Logout</a></li>
+				</ul>
+			</div>
+			<div class="row content">
+				{% block body %}
+				{% endblock %}
+			</div>
+		</div>
+	</body>
+</html>

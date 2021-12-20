@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="col-lg-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>Todos os Perfis</strong>
+		</div>
+		{% if sales %}
+			    <table class="table table-bordered table-hover">
+                    <thead>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Buyer</th>
+                        <th>Actions</th>
+                    </thead>
+
+                    {% for sale in sales %}
+                        <tr>
+                            <td>{{ sale.id }}</td>
+                            <td>{{ sale.date }}</td>
+                            <td> {{ sale.buyer.username }}</td>
+                            <td>
+                                <a href="{% url 'remove_sale' sale.id %}">
+                                    <span class="glyphicon glyphicon-trash"/>
+                                </a>
+                                <a href="{% url 'edit_sale' sale.id %}">
+                                    <span class="glyphicon glyphicon-pencil"/>
+                                </a>
+                            </td>
+                        </tr>
+				    {% endfor %}
+                </table>
+		{% else %}
+			<p>Nenhuma venda feita ainda :(</p>
+		{% endif %}
+	</div>
+    <a class="btn btn-primary" href="{% url 'sell_product' %}">Vender Produtos</a>
+</div>
+{% endblock %}
