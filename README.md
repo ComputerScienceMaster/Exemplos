@@ -39,12 +39,7 @@ Esse projeto abriga vários exemplos de CRUD (aplicações que fazem inserção,
 Nesse projeto você encontra várias implementações de estruturas de dados bastante populares, como por exemplo: filas, pilhas, árvores, etc. Esse tipo de estrutura é geralmente uma pedra no sapato dos alunos que estão cursando alguma graduação que envolve desenvolvimento de softwares. Portanto, nosso objetivo com esse repositório é ajudar você nessa jornada e fornecer exemplos práticos de como implementar. 
 
 
-A maioriados dos exemplos que estão presentes nesse repositório foram postados em nosso website. Esse repositório tem a função de agregar todos os códigos presentes nos artigos dos cursos em um único lugar. Se você quiser acessar os nossos cursos, acesse:
-
-https://www.computersciencemaster.com.br/exemplos/
-
-As pastas acima estão organizadas na mesma sequência do website e você pode contribuir com correções dos códigos ou então ajustando exemplos que não estão funcionando mais. Além disso, qualquer iniciativa para melhorar a documentação do repositório também é bem vinda. Fique à vontade para usar e compartilhar essa iniciativa.
-
+Esse repositório tem a função de agregar todos os códigos presentes nos artigos do CSM em um único lugar. Portanto, a maioria dos dos exemplos que estão aqui foram postados melhor explicados em algum post no nosso website. As pastas estão organizadas na mesma sequência, assim, você pode localizar facilmente o conteúdo mais facilmente.
 
 # 🌟 Como contribuir?
 
