@@ -22,13 +22,13 @@ Nessa pasta você encontra exemplos simples de scripts e aplicações sem grande
 
 ### 🕐 Aprenda em 20 minutos
 
-[Acesse o conteúdo no CSM] (https://www.computersciencemaster.com.br/aprenda-em-20-minutos/)
+[Acesse o conteúdo no CSM](https://www.computersciencemaster.com.br/aprenda-em-20-minutos/)
 
 Esse projeto é pra você que está migrando de linguagem ou buscando conhecimento em outras áreas. Em suma, sabemos que aprender uma linguagem de programação exige que você "decore" os mesmo comando em várias sintaxes, assim, nosso objetivo nesse projeto é mostrar os principais comandos das linguagens de programação com exemplos simples e fáceis de usar.
 
 ### 🔑 CRUD
 
-[Acesse p conteúdo no CSM] (https://www.computersciencemaster.com.br/exemplos-de-crud/)
+[Acesse p conteúdo no CSM](https://www.computersciencemaster.com.br/exemplos-de-crud/)
 
 Esse projeto abriga vários exemplos de CRUD (aplicações que fazem inserção, leitura, atualização e deleção) utilizando várias tecnologias diferentes. A inspiração para criar esse projeto nasceu da necessidade de sempre criar os mesmos exemplos didáticos para aprender alguma nova linguagem. Portanto, nesse repositório você vai encontrar vários mashups interessantes que você poderá usar como base para construir seus exemplos.
 
