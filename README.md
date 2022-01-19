@@ -28,7 +28,7 @@ Esse projeto é pra você que está migrando de linguagem ou buscando conhecimen
 
 ### 🔑 CRUD
 
-[Acesse p conteúdo no CSM](https://www.computersciencemaster.com.br/exemplos-de-crud/)
+[Acesse o conteúdo no CSM](https://www.computersciencemaster.com.br/exemplos-de-crud/)
 
 Esse projeto abriga vários exemplos de CRUD (aplicações que fazem inserção, leitura, atualização e deleção) utilizando várias tecnologias diferentes. A inspiração para criar esse projeto nasceu da necessidade de sempre criar os mesmos exemplos didáticos para aprender alguma nova linguagem. Portanto, nesse repositório você vai encontrar vários mashups interessantes que você poderá usar como base para construir seus exemplos.
 
