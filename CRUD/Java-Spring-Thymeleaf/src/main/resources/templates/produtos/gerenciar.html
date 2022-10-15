@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<div th:replace="~{base:: head}"></div>
+
+<div th:replace="~{base :: navbar}"></div>
+
+
+<body class="container">
+
+	<div th:replace="~{base :: banner('Gerenciar Produtos')}"></div>
+
+
+	<div class="d-flex justify-content-end">
+		<a href="/produtos/novo" class='btn btn-success' type='submit'>Novo</a>
+	</div>
+	<table class=table table-dark>
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Descrição</th>
+				<th>Preço</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="produto : ${produtos}">
+				<td th:text="${produto.nome}"></td>
+				<td th:text="${produto.descricao}"></td>
+				<td th:text="${produto.preco}"></td>
+				<td>
+					<form th:action="'excluir/' + ${produto.idProduto}" method="GET">
+						<button type="submit" class="btn btn-danger" >Excluir</button>
+					</form>
+					<form th:action="'alterar/' + ${produto.idProduto}" method="GET">
+						<button type="submit" class="btn btn-warning">Alterar</button>
+					</form>
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

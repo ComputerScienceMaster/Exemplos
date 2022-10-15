@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<div th:replace="~{base:: head}"></div>
+
+
+<div th:replace="~{base :: navbar}"></div>
+
+
+<body class="container">
+
+	<div th:replace="~{base :: banner('Loja CSM')}"></div>
+		
+
+	<div class="row">
+		<div class="col" th:each="produto : ${produtos}">
+			<div class="card" >
+				<img th:src="${produto.foto}" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title" th:text="${produto.nome}">Nome do
+						Produto</h5>
+					<p class="card-text" th:text="${produto.descricao}">Some quick
+						example text to build on the card title and make up the bulk of
+						the card's content.</p>
+					<a href="#" class="btn btn-primary">Comprar agora!</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

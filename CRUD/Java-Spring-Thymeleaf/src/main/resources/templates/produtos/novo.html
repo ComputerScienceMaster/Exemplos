@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<div th:replace="~{base:: head}"></div>
+
+<div th:replace="~{base :: navbar}"></div>
+
+
+<body class="container">
+
+	<div th:replace="~{base :: banner('Adicionar Novo')}"></div>
+
+	<form method="POST" action="novo">
+		<div class="form-group">
+			<input class="form-control mb-1" name="nome" type="text"
+				placeholder="Digite o nome" />
+			<textarea class="form-control mb-1" name="descricao"
+				placeholder="Digite o descrição"></textarea>
+			<input class="form-control mb-1" name="preco" type="number"
+				placeholder="Digite o nome do preco" /> <input
+				class="form-control mb-1" name="rating" type="number"
+				placeholder="Digite a avaliação do produto (1 - 5)" /> <input
+				class="form-control mb-1" name="url" type="text"
+				placeholder="Digite a url do produto" />
+		</div>
+
+		<button class="btn btn-success mt-3" type="submit">Cadastrar!</button>
+	</form>
+
+</body>
+</html>

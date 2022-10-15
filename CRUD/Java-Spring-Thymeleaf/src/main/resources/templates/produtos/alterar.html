@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<div th:replace="~{base:: head}"></div>
+
+<div th:replace="~{base :: navbar}"></div>
+
+
+<body class="container">
+
+	<div th:replace="~{base :: banner('Alterar produto')}"></div>
+
+	<form method="POST" action="/produtos/alterar">
+		<div class="form-group">
+		<input type="hidden" name="idProduto" th:value="${produto.idProduto}"/>
+			<input class="form-control mb-1" th:value="${produto.nome}"
+				name="nome" type="text" placeholder="Digite o nome" />
+			<textarea th:text="${produto.descricao}" class="form-control mb-1"
+				name="descricao" placeholder="Digite o descrição"></textarea>
+			<input th:value="${produto.preco}" class="form-control mb-1"
+				name="preco" type="number" placeholder="Digite o nome do preco" />
+			<input th:value="${produto.rating}" class="form-control mb-1"
+				name="rating" type="number"
+				placeholder="Digite a avaliação do produto (1 - 5)" /> <input
+				th:value="${produto.foto}" class="form-control mb-1" name="url" type="text"
+				placeholder="Digite a url do produto" />
+		</div>
+
+		<button class="btn btn-success mt-3" type="submit">Alterar!</button>
+	</form>
+
+</body>
+</html>
